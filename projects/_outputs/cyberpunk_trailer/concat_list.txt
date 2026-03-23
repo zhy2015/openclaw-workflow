@@ -1,3 +1,0 @@
-file 'scene1_glitch.mp4'
-file 'scene2_cyborg_glitch.mp4'
-file 'scene3_with_bass.mp4'

@@ -1,0 +1,30 @@
+name: ci
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+      PYTEST_DISABLE_PLUGIN_AUTOLOAD: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install deps
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install -r requirements.txt
+      - name: Boundary check
+        run: python3 scripts/check_constitution_boundaries.py
+      - name: Tests
+        run: |
+          python3 -m pytest -q \
+            tests/test_skill_manager_smoke.py \
+            tests/test_base_agent_constitution.py \
+            tests/test_constitution_runtime.py
