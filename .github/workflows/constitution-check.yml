@@ -20,7 +20,7 @@ jobs:
       - name: Install test deps
         run: |
           python3 -m pip install --upgrade pip
-          python3 -m pip install pytest pyyaml
+          python3 -m pip install pytest pyyaml httpx
 
       - name: Constitution boundary check
         run: python3 scripts/testing/check_constitution_boundaries.py
