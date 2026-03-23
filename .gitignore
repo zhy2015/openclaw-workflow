@@ -18,6 +18,9 @@ node_modules/
 output/
 archive/
 logs/
+workflows/logs/
+*.wal
+*.wal.jsonl
 *.mp4
 *.mov
 *.mkv

@@ -1,8 +1,0 @@
-{"timestamp": "2026-03-20T22:17:09.251577", "workflow_id": "test-chaining", "task_id": "node_a", "status": "running", "metadata": {"skill_uri": "skill://echo-skill/default_action"}}
-{"timestamp": "2026-03-20T22:17:09.253530", "workflow_id": "test-chaining", "task_id": "node_b", "status": "running", "metadata": {"skill_uri": "skill://echo-skill/default_action"}}
-{"timestamp": "2026-03-20T22:17:09.756634", "workflow_id": "test-chaining", "task_id": "node_a", "status": "success", "payload": {"node_a.message": "Hello", "node_a.status": "success", "node_a.node": "A"}, "metadata": {"node_id": "node_a"}}
-{"timestamp": "2026-03-20T22:17:10.258781", "workflow_id": "test-chaining", "task_id": "node_b", "status": "success", "payload": {"node_b.message": "Hello World", "node_b.status": "success", "node_b.node": "B"}, "metadata": {"node_id": "node_b"}}
-{"timestamp": "2026-03-20T22:22:03.831699", "workflow_id": "test-chaining", "task_id": "node_a", "status": "running", "metadata": {"skill_uri": "skill://echo-skill/default_action"}}
-{"timestamp": "2026-03-20T22:22:03.833136", "workflow_id": "test-chaining", "task_id": "node_b", "status": "running", "metadata": {"skill_uri": "skill://echo-skill/default_action"}}
-{"timestamp": "2026-03-20T22:22:04.336145", "workflow_id": "test-chaining", "task_id": "node_a", "status": "success", "payload": {"node_a.message": "Hello", "node_a.status": "success", "node_a.node": "A"}, "metadata": {"node_id": "node_a"}}
-{"timestamp": "2026-03-20T22:22:04.837463", "workflow_id": "test-chaining", "task_id": "node_b", "status": "success", "payload": {"node_b.message": "Hello World", "node_b.status": "success", "node_b.node": "B"}, "metadata": {"node_id": "node_b"}}

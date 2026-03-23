@@ -30,7 +30,7 @@ class YAMLWorkflowError(Exception):
 
 class YAMLWorkflowLoader:
     def __init__(self, base_dir: Optional[str] = None):
-        self.base_dir = Path(base_dir or "/root/.openclaw/workspace/workflows")
+        self.base_dir = Path(base_dir) if base_dir else Path(__file__).resolve().parents[2] / "workflows"
 
     def load_file(self, path: str | Path) -> LoadedWorkflow:
         file_path = Path(path)

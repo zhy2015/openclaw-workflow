@@ -18,8 +18,8 @@ from core.runtime.dispatch import GovernedDispatcher
 
 
 class WorkflowRunner:
-    def __init__(self, workspace_root: str = "/root/.openclaw/workspace", dispatcher: GovernedDispatcher | None = None):
-        self.workspace_root = Path(workspace_root)
+    def __init__(self, workspace_root: str | None = None, dispatcher: GovernedDispatcher | None = None):
+        self.workspace_root = Path(workspace_root) if workspace_root else Path(__file__).resolve().parents[2]
         self.workflows_dir = self.workspace_root / "workflows"
         self.logs_dir = self.workflows_dir / "logs"
         self.logs_dir.mkdir(parents=True, exist_ok=True)

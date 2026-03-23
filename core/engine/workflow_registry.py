@@ -79,9 +79,10 @@ class WorkflowRegistry:
     4. 支持恢复执行
     """
     
-    def __init__(self, registry_path: str = "/root/.openclaw/workspace/workflows/registry.json"):
-        self.registry_path = registry_path
-        self.workflows_dir = os.path.dirname(registry_path)
+    def __init__(self, registry_path: Optional[str] = None):
+        resolved_path = registry_path or str((__import__('pathlib').Path(__file__).resolve().parents[2] / 'workflows' / 'registry.json'))
+        self.registry_path = resolved_path
+        self.workflows_dir = os.path.dirname(resolved_path)
         self._workflows: Dict[str, Workflow] = {}
         self._heartbeat_timeout = 300  # 5分钟超时
         
