@@ -94,7 +94,6 @@ class WALEngine:
         }
         
         await self._append_record(record)
-        print(f"[WAL] Task {task_id} SUCCESS, payload saved ({len(payload)} keys)")
     
     async def log_task_failure(
         self,

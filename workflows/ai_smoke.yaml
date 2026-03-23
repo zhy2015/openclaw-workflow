@@ -1,10 +1,17 @@
 workflow_id: ai-smoke
 name: AI Smoke Workflow
 nodes:
-  - id: list_skills
-    skill_name: echo-skill
+  - id: first
+    skill_name: builtin-smoke
+    tool_name: ping
+    inputs:
+      x: hello
+    outputs: [pong, message]
+    next: [second]
+
+  - id: second
+    skill_name: builtin-smoke
     tool_name: echo
     inputs:
-      text: hello
-    outputs:
-      - echoed
+      message: first.message
+    outputs: [echo]

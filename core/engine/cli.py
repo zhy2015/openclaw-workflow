@@ -16,6 +16,9 @@ if str(WORKSPACE_ROOT) not in sys.path:
     sys.path.insert(0, str(WORKSPACE_ROOT))
 
 from core.infra.legacy_registry_adapter import LegacyRegistryAdapterFactory
+from core.infra.builtin_smoke_skill import BuiltinSmokeSkill
+from core.infra.skill_manager import SkillManager
+from core.runtime.dispatch import GovernedDispatcher
 from core.engine.runner import WorkflowRunner
 
 
@@ -31,7 +34,10 @@ def cmd_skill_list() -> int:
 
 
 async def cmd_workflow_run(workflow_file: str) -> int:
-    runner = WorkflowRunner()
+    manager = SkillManager()
+    manager.register(BuiltinSmokeSkill())
+    dispatcher = GovernedDispatcher(manager)
+    runner = WorkflowRunner(dispatcher=dispatcher)
     result = await runner.run_yaml(workflow_file)
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 0

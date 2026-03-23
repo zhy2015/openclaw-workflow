@@ -2,17 +2,16 @@ workflow_id: test-chaining
 name: Test Chaining Workflow
 nodes:
   - id: node_a
-    skill_name: echo-skill
-    tool_name: default_action
+    skill_name: builtin-smoke
+    tool_name: ping
     inputs:
-      action: print_hello
+      x: hello
     outputs: [message, status, node]
     next: [node_b]
 
   - id: node_b
-    skill_name: echo-skill
-    tool_name: default_action
+    skill_name: builtin-smoke
+    tool_name: echo
     inputs:
-      action: print_world
-      prev_output: node_a.message
+      message: node_a.message
     outputs: [message, status, node]
