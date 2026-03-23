@@ -1,0 +1,44 @@
+workflow_id: comic-workflow-real-smoke
+name: Comic Workflow Real Adapter Smoke
+nodes:
+  - id: script_generate
+    skill_name: real-comic-workflow
+    tool_name: script_generate
+    inputs:
+      topic: "Hero Journey"
+      panels: 4
+    outputs: [script_outline, panels, source_skill]
+    next: [avatar_prompt_generate]
+
+  - id: avatar_prompt_generate
+    skill_name: real-comic-workflow
+    tool_name: avatar_prompt_generate
+    inputs:
+      character_prompt: "young hero with silver hair and determined eyes"
+      style: "manga"
+      mode: "max"
+    outputs: [avatar_prompt, style, mode, source_skill]
+    next: [comic_render_prompt]
+
+  - id: comic_render_prompt
+    skill_name: real-comic-workflow
+    tool_name: comic_render_prompt
+    inputs:
+      story_prompt: script_generate.script_outline
+      format: "page"
+      chat_mode: "agent"
+    outputs: [render_prompt, format, chat_mode, source_skill]
+    next: [knowledge_comic_plan]
+
+  - id: knowledge_comic_plan
+    skill_name: real-comic-workflow
+    tool_name: knowledge_comic_plan
+    inputs:
+      topic: "Recursion Explained"
+      source_text: "递归就是函数调用自身，并逐步逼近终止条件。"
+      art: "manga"
+      tone: "neutral"
+      layout: "standard"
+      aspect: "3:4"
+      lang: "zh"
+    outputs: [topic, command_preview, output_dir, source_skill]

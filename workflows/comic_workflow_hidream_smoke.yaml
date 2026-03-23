@@ -1,0 +1,19 @@
+workflow_id: comic-workflow-hidream-smoke
+name: Comic Workflow HiDream Smoke
+nodes:
+  - id: compile_storyboard
+    skill_name: real-comic-workflow
+    tool_name: compile_storyboard
+    inputs:
+      topic: "赛博朋克算命局"
+    outputs: [global_settings, panel_array]
+    next: [build_hidream_payloads]
+
+  - id: build_hidream_payloads
+    skill_name: real-comic-workflow
+    tool_name: build_hidream_payloads
+    inputs:
+      compiled_storyboard:
+        global_settings: compile_storyboard.global_settings
+        panel_array: compile_storyboard.panel_array
+    outputs: [character_sheet_payload, panel_payloads]

@@ -36,7 +36,7 @@ class DAGNode:
     skill_uri: Optional[str] = None         # legacy compatibility: skill://name/action
     skill_name: Optional[str] = None        # canonical target skill name
     tool_name: Optional[str] = None         # canonical target tool name
-    inputs: Dict[str, str] = field(default_factory=dict)   # {param: "from_node.output_key"}
+    inputs: Dict[str, Any] = field(default_factory=dict)   # {param: literal | "from_node.output_key" | nested payload}
     outputs: List[str] = field(default_factory=list)       # 输出键名列表
     retries: int = 3
     timeout: int = 300       # 秒
@@ -166,18 +166,36 @@ class DAGEngine:
         kwargs = {}
 
         for param, source in node.inputs.items():
-            if "." in source:
-                source_node_id, output_key = source.split(".", 1)
-                source_node = pipeline.nodes.get(source_node_id)
-
-                if source_node and source_node.status == NodeStatus.SUCCESS:
-                    kwargs[param] = source_node.result.get(output_key)
-                else:
-                    kwargs[param] = await self.context.get(f"{source_node_id}.{output_key}")
-            else:
-                kwargs[param] = source
+            kwargs[param] = await self._resolve_value(source, pipeline)
 
         return kwargs
+
+    async def _resolve_value(self, value: Any, pipeline: DAGPipeline) -> Any:
+        # Fast path: primitive literals should pass through untouched.
+        if value is None or isinstance(value, (int, float, bool)):
+            return value
+
+        if isinstance(value, list):
+            return [await self._resolve_value(item, pipeline) for item in value]
+
+        if isinstance(value, dict):
+            return {
+                key: await self._resolve_value(item, pipeline)
+                for key, item in value.items()
+            }
+
+        if not isinstance(value, str):
+            return value
+
+        if "." in value:
+            source_node_id, output_key = value.split(".", 1)
+            source_node = pipeline.nodes.get(source_node_id)
+
+            if source_node and source_node.status == NodeStatus.SUCCESS:
+                return source_node.result.get(output_key)
+            return await self.context.get(f"{source_node_id}.{output_key}")
+
+        return value
 
     async def _call_skill(self, skill_name: str, tool_name: str, kwargs: Dict[str, Any]) -> Any:
         loop = asyncio.get_event_loop()

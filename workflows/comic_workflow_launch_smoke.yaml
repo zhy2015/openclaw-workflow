@@ -1,0 +1,29 @@
+workflow_id: comic-workflow-launch-smoke
+name: Comic Workflow Launch Smoke
+nodes:
+  - id: compile_storyboard
+    skill_name: real-comic-workflow
+    tool_name: compile_storyboard
+    inputs:
+      topic: "倒悬的钟楼"
+    outputs: [global_settings, panel_array]
+    next: [build_hidream_payloads]
+
+  - id: build_hidream_payloads
+    skill_name: real-comic-workflow
+    tool_name: build_hidream_payloads
+    inputs:
+      compiled_storyboard:
+        global_settings: compile_storyboard.global_settings
+        panel_array: compile_storyboard.panel_array
+    outputs: [character_sheet_payload, panel_payloads]
+    next: [adapt_hidream_requests]
+
+  - id: adapt_hidream_requests
+    skill_name: real-comic-workflow
+    tool_name: adapt_hidream_requests
+    inputs:
+      hidream_payloads:
+        character_sheet_payload: build_hidream_payloads.character_sheet_payload
+        panel_payloads: build_hidream_payloads.panel_payloads
+    outputs: [character_sheet_request, panel_requests]

@@ -1,0 +1,46 @@
+workflow_id: comic-workflow-smoke
+name: Comic Workflow Smoke
+nodes:
+  - id: intent_classify
+    skill_name: builtin-comic-workflow
+    tool_name: classify
+    inputs:
+      topic: "用 AI 做一篇讲解递归的知识漫画"
+      comic_type: "knowledge"
+    outputs: [topic, comic_type, route]
+    next: [script_generate, character_reference_generate]
+
+  - id: script_generate
+    skill_name: builtin-comic-workflow
+    tool_name: script_scaffold
+    inputs:
+      topic: intent_classify.topic
+      panels: 6
+    outputs: [script_outline, panels]
+    next: [comic_render_generate]
+
+  - id: character_reference_generate
+    skill_name: builtin-comic-workflow
+    tool_name: character_scaffold
+    inputs:
+      topic: intent_classify.topic
+      style: "manga"
+    outputs: [character_ref, style]
+    next: [comic_render_generate]
+
+  - id: comic_render_generate
+    skill_name: builtin-comic-workflow
+    tool_name: render_plan
+    inputs:
+      topic: intent_classify.topic
+      route: intent_classify.route
+    outputs: [render_tool, render_spec]
+    next: [package_output]
+
+  - id: package_output
+    skill_name: builtin-comic-workflow
+    tool_name: package_plan
+    inputs:
+      topic: intent_classify.topic
+      format: "pdf"
+    outputs: [deliverable, format]

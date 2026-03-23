@@ -17,6 +17,8 @@ if str(WORKSPACE_ROOT) not in sys.path:
 
 from core.infra.legacy_registry_adapter import LegacyRegistryAdapterFactory
 from core.infra.builtin_smoke_skill import BuiltinSmokeSkill
+from core.infra.builtin_comic_workflow_skill import BuiltinComicWorkflowSkill
+from core.infra.real_comic_workflow_skill import RealComicWorkflowSkill
 from core.infra.skill_manager import SkillManager
 from core.runtime.dispatch import GovernedDispatcher
 from core.engine.runner import WorkflowRunner
@@ -34,8 +36,12 @@ def cmd_skill_list() -> int:
 
 
 async def cmd_workflow_run(workflow_file: str) -> int:
-    manager = SkillManager()
+    manager = SkillManager(context=None)
+    manager._context.config["workspace_root"] = str(WORKSPACE_ROOT)
+    manager._context.config["skills_root"] = "/Users/hidream/.openclaw/workspace/skills"
     manager.register(BuiltinSmokeSkill())
+    manager.register(BuiltinComicWorkflowSkill())
+    manager.register(RealComicWorkflowSkill())
     dispatcher = GovernedDispatcher(manager)
     runner = WorkflowRunner(dispatcher=dispatcher)
     result = await runner.run_yaml(workflow_file)
