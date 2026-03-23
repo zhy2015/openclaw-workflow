@@ -1,0 +1,29 @@
+{
+  "name": "firecrawler",
+  "description": "Web scraping and crawling",
+  "category": "search",
+  "version": "1.0.0",
+  "task_nodes": [
+    "monitoring",
+    "automation"
+  ],
+  "status": "experimental",
+  "visibility": "public",
+  "owner": "xiaoluyun",
+  "last_verified_at": "2026-03-20T04:30:00Z",
+  "execution_type": "python_import",
+  "actions": {
+    "crawl": {
+      "module": "fc",
+      "function": "crawl",
+      "description": "Crawl website"
+    }
+  },
+  "routing": {
+    "startup_expose": false,
+    "startup_reason": "specialized_web_crawl_only",
+    "hints": [
+      "explicit_task_trigger_required"
+    ]
+  }
+}

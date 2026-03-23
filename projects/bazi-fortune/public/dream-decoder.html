@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>梦境解码器 · 心理锚点</title>
+    <link rel="icon" type="image/jpeg" href="/logo.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background: linear-gradient(180deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #e8e8e8;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(2px 2px at 20px 30px, rgba(100,149,237,0.3), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(100,149,237,0.2), transparent);
+            background-size: 450px 250px;
+            animation: twinkle 6s ease-in-out infinite;
+            pointer-events: none; z-index: 0;
+        }
+        @keyframes twinkle { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 1; }
+        
+        header { text-align: center; margin-bottom: 40px; padding: 20px 0; border-bottom: 1px solid rgba(100,149,237, 0.3); }
+        .back-link { color: #888; text-decoration: none; font-size: 0.9rem; position: absolute; left: 20px; top: 30px; }
+        .back-link:hover { color: #6495ed; }
+        header h1 { font-size: 2.2rem; color: #6495ed; letter-spacing: 4px; margin-top: 10px; }
+        .subtitle { color: #888; margin-top: 10px; }
+        
+        .card {
+            background: linear-gradient(145deg, rgba(30,30,50,0.6) 0%, rgba(20,20,40,0.4) 100%);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(100,149,237, 0.2);
+        }
+        .card-title { color: #6495ed; font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 2px; }
+        
+        textarea {
+            width: 100%;
+            padding: 18px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(100,149,237, 0.2);
+            border-radius: 12px;
+            color: #f0f0f0;
+            font-size: 1rem;
+            font-family: inherit;
+            min-height: 150px;
+            resize: vertical;
+            line-height: 1.8;
+        }
+        textarea::placeholder { color: #666; }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #6495ed 0%, #4169e1 100%);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            letter-spacing: 4px;
+            transition: all 0.3s;
+        }
+        .submit-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(100,149,237, 0.4); }
+        .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .loading.show { display: block; }
+        .loading-spinner {
+            width: 60px; height: 60px;
+            border: 3px solid rgba(100,149,237, 0.2);
+            border-top-color: #6495ed;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        .result-card {
+            display: none;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(100,149,237, 0.3);
+        }
+        .result-card.show { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .result-title {
+            font-size: 1.5rem;
+            color: #6495ed;
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(100,149,237, 0.3);
+        }
+        
+        .insight-block {
+            background: rgba(100,149,237, 0.05);
+            border-left: 3px solid #6495ed;
+            padding: 18px 22px;
+            margin: 18px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        .insight-title { color: #6495ed; font-weight: 600; margin-bottom: 10px; font-size: 1.05rem; }
+        .insight-content { color: #ccc; line-height: 1.9; }
+        
+        .symbol-grid {
+            display: grid;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .symbol-item {
+            background: rgba(0,0,0,0.2);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #9370db;
+        }
+        .symbol-name { color: #9370db; font-weight: 600; margin-bottom: 8px; }
+        .symbol-traditional { color: #888; font-size: 0.9rem; margin-bottom: 5px; }
+        .symbol-psych { color: #aaa; font-size: 0.9rem; margin-bottom: 5px; }
+        .symbol-message { color: #e0e0e0; }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(147,112,219,0.1) 0%, rgba(100,149,237,0.1) 100%);
+            border: 1px solid rgba(147,112,219,0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="/" class="back-link">← 返回首页</a>
+            <h1>🌌 梦境解码器</h1>
+            <p class="subtitle">破译潜意识写给你的密信</p>
+        </header>
+        
+        <div class="card" id="inputCard">
+            <div class="card-title">描述你的梦境</div>
+            <textarea id="dreamDesc" placeholder="尽可能详细地描述你的梦境，包括：&#10;&#10;• 梦里的场景和环境&#10;• 出现的人物或动物&#10;• 你的情绪和感受&#10;• 梦里发生的事情&#10;&#10;例如：我梦见自己在水中不断下沉，周围有很多人在岸上看着我，但没人来救我。我感到非常恐惧和无助..."></textarea>
+            <button class="submit-btn" onclick="analyzeDream()" style="margin-top: 20px;">
+                🔮 解析梦境
+            </button>
+        </div>
+        
+        <div class="loading" id="loading">
+            <div class="loading-spinner"></div>
+            <p style="color: #6495ed; font-size: 1.1rem;">正在解读梦境...</p>
+            <p style="color: #888; margin-top: 10px;">这需要 30-60 秒，请耐心等候</p>
+        </div>
+        
+        <div class="card result-card" id="resultCard">
+            <div class="result-title" id="resultTitle"></div>
+            <div id="resultContent"></div>
+        </div>
+    </div>
+    
+    <script>
+        const API_BASE = 'http://124.222.70.196:30001';
+        
+        async function analyzeDream() {
+            const dreamDesc = document.getElementById('dreamDesc').value.trim();
+            
+            if (!dreamDesc || dreamDesc.length < 10) {
+                return alert('请详细描述你的梦境（至少10个字）');
+            }
+            
+            document.getElementById('inputCard').style.display = 'none';
+            document.getElementById('loading').classList.add('show');
+            document.getElementById('resultCard').classList.remove('show');
+            
+            try {
+                const response = await fetch(`${API_BASE}/api/dream`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ dream_desc: dreamDesc })
+                });
+                
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.message || '解析失败');
+                }
+                
+                displayResult(data.result);
+                
+            } catch (error) {
+                alert('解析失败：' + error.message);
+                document.getElementById('inputCard').style.display = 'block';
+            } finally {
+                document.getElementById('loading').classList.remove('show');
+            }
+        }
+        
+        function displayResult(result) {
+            document.getElementById('resultTitle').textContent = result.title;
+            
+            let html = '';
+            
+            // 叙事分析
+            html += `<div class="insight-block">
+                <div class="insight-title">📖 梦境叙事</div>
+                <div class="insight-content">${result.narrative}</div>
+            </div>`;
+            
+            // 关键意象
+            if (result.key_symbols && result.key_symbols.length > 0) {
+                html += `<div class="card-title" style="margin-top: 30px;">🔍 关键意象解析</div>`;
+                html += `<div class="symbol-grid">`;
+                result.key_symbols.forEach(symbol => {
+                    html += `<div class="symbol-item">
+                        <div class="symbol-name">${symbol.symbol}</div>
+                        <div class="symbol-traditional">📜 传统解读：${symbol.traditional}</div>
+                        <div class="symbol-psych">🧠 心理学视角：${symbol.psychological}</div>
+                        <div class="symbol-message">💡 想告诉你：${symbol.message}</div>
+                    </div>`;
+                });
+                html += `</div>`;
+            }
+            
+            // 被忽略的现实
+            if (result.ignored_reality) {
+                html += `<div class="highlight-box">
+                    <div class="insight-title">⚠️ 被忽略的现实</div>
+                    <div class="insight-content">${result.ignored_reality}</div>
+                </div>`;
+            }
+            
+            // 潜意识信息
+            if (result.subconscious_message) {
+                html += `<div class="insight-block" style="border-left-color: #9370db; background: rgba(147,112,219,0.05);">
+                    <div class="insight-title">💭 潜意识想对你说</div>
+                    <div class="insight-content" style="font-style: italic; color: #e0e0e0;">"${result.subconscious_message}"</div>
+                </div>`;
+            }
+            
+            // 建议
+            if (result.actionable_advice && result.actionable_advice.length > 0) {
+                html += `<div class="card-title" style="margin-top: 30px;">💡 建议行动</div>`;
+                result.actionable_advice.forEach((advice, idx) => {
+                    html += `<div class="insight-block" style="border-left-color: #2ecc71;">
+                        <div class="insight-content">${idx + 1}. ${advice}</div>
+                    </div>`;
+                });
+            }
+            
+            // 压力指标
+            if (result.stress_indicator) {
+                html += `<div class="highlight-box" style="margin-top: 25px;">
+                    <div class="insight-title">📊 压力状态评估</div>
+                    <div class="insight-content">${result.stress_indicator}</div>
+                </div>`;
+            }
+            
+            document.getElementById('resultContent').innerHTML = html;
+            document.getElementById('resultCard').classList.add('show');
+            document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

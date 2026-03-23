@@ -1,0 +1,59 @@
+name: "cli-anything-drawio"
+version: "1.0.0"
+description: "Generate professional diagrams (architecture, flowcharts, logic trees) via Draw.io."
+
+runtime: "native"
+
+dependencies:
+  system:
+    - name: "python3"
+      version: ">=3.8"
+  python: []
+  services: []
+
+resources:
+  disk: "100MB"
+  memory: "256MB"
+  gpu: false
+
+entrypoint:
+  module: "scripts.drawio_generator"
+  function: "generate"
+
+inputs:
+  description:
+    type: "string"
+    description: "Diagram description"
+    required: true
+  
+  type:
+    type: "string"
+    description: "Diagram type"
+    required: false
+    default: "architecture"
+    enum: ["architecture", "flowchart", "logic-tree", "mindmap"]
+  
+  output:
+    type: "string"
+    description: "Output file path"
+    required: false
+
+outputs:
+  diagram_path:
+    type: "string"
+    description: "Generated diagram file path"
+  
+  preview_url:
+    type: "string"
+    description: "Preview URL"
+
+workflow:
+  name: "cli-anything-drawio-single"
+  nodes:
+    - id: "generate"
+      name: "Generate Diagram"
+      skill: "cli-anything-drawio"
+      inputs:
+        description: "$.inputs.description"
+        type: "$.inputs.type"
+        output: "$.inputs.output"

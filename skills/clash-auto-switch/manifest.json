@@ -1,0 +1,103 @@
+{
+  "name": "clash-auto-switch",
+  "version": "1.0.0",
+  "description": "Clash 代理自动切换与健康检查",
+  "category": "network",
+  "task_nodes": [
+    "automation",
+    "monitoring"
+  ],
+  "status": "experimental",
+  "visibility": "internal",
+  "execution_type": "python_import",
+  "owner": "workspace:local",
+  "last_verified_at": "2026-03-20T09:32:00Z",
+  "entry_point": "clash-switch.py",
+  "actions": {
+    "health_check": {
+      "module": "clash-switch",
+      "function": "health_check",
+      "default_args": {
+        "api_url": "http://127.0.0.1:9090",
+        "proxy_url": "http://127.0.0.1:7890"
+      },
+      "args": {
+        "api_url": {
+          "type": "string",
+          "default": "http://127.0.0.1:9090"
+        },
+        "secret": {
+          "type": "string",
+          "default": ""
+        },
+        "proxy_url": {
+          "type": "string",
+          "default": "http://127.0.0.1:7890"
+        }
+      },
+      "outputs": [
+        "status",
+        "healthy"
+      ]
+    },
+    "auto_switch": {
+      "module": "clash-switch",
+      "function": "auto_switch_best_node",
+      "default_args": {
+        "api_url": "http://127.0.0.1:9090"
+      },
+      "args": {
+        "api_url": {
+          "type": "string",
+          "default": "http://127.0.0.1:9090"
+        },
+        "secret": {
+          "type": "string",
+          "default": ""
+        },
+        "region": {
+          "type": "string",
+          "default": "auto"
+        }
+      },
+      "outputs": [
+        "switched_to",
+        "latency"
+      ]
+    },
+    "switch_region": {
+      "module": "clash-switch",
+      "function": "switch_to_region",
+      "args": {
+        "region": {
+          "type": "string",
+          "required": true
+        },
+        "api_url": {
+          "type": "string",
+          "default": "http://127.0.0.1:9090"
+        },
+        "secret": {
+          "type": "string",
+          "default": ""
+        }
+      },
+      "outputs": [
+        "switched_to",
+        "success"
+      ]
+    }
+  },
+  "dependencies": [
+    "python3",
+    "requests"
+  ],
+  "config_required": [],
+  "routing": {
+    "startup_expose": false,
+    "startup_reason": "proxy_automation_only",
+    "hints": [
+      "explicit_task_trigger_required"
+    ]
+  }
+}

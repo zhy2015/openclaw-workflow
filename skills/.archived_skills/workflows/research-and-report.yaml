@@ -1,0 +1,101 @@
+# Research and Report Workflow
+# Combines: tavily-search -> summarize -> notion
+
+name: "research-and-report"
+version: "1.0.0"
+description: "Research a topic, summarize findings, and save to Notion"
+
+runtime: "native"
+
+dependencies:
+  system: []
+  python: []
+  services: []
+
+resources:
+  disk: "100MB"
+  memory: "256MB"
+  gpu: false
+
+inputs:
+  topic:
+    type: "string"
+    description: "Research topic"
+    required: true
+  
+  search_depth:
+    type: "string"
+    description: "Search depth"
+    required: false
+    default: "advanced"
+  
+  max_results:
+    type: "integer"
+    description: "Number of search results"
+    required: false
+    default: 10
+  
+  notion_parent_id:
+    type: "string"
+    description: "Notion parent page ID"
+    required: true
+
+outputs:
+  notion_page_id:
+    type: "string"
+    description: "Created Notion page ID"
+  
+  notion_url:
+    type: "string"
+    description: "Notion page URL"
+  
+  summary:
+    type: "string"
+    description: "Generated summary"
+
+# DAG Workflow
+workflow:
+  name: "research-and-report"
+  nodes:
+    - id: "search"
+      name: "Search Web"
+      skill: "tavily-search"
+      inputs:
+        query: "$.inputs.topic"
+        max_results: "$.inputs.max_results"
+        search_depth: "$.inputs.search_depth"
+        include_answer: true
+    
+    - id: "summarize"
+      name: "Summarize Results"
+      skill: "summarize"
+      depends_on: ["search"]
+      inputs:
+        source: "$.nodes.search.outputs.answer"
+        max_length: 2000
+    
+    - id: "create_notion_page"
+      name: "Create Notion Page"
+      skill: "notion"
+      depends_on: ["summarize"]
+      inputs:
+        action: "create_page"
+        parent_id: "$.inputs.notion_parent_id"
+        title: "Research: {$.inputs.topic}"
+        content: "$.nodes.summarize.outputs.summary"
+
+circuit_breaker:
+  failure_threshold: 3
+  recovery_timeout: 300
+
+retry_policy:
+  max_attempts: 2
+  backoff: "exponential"
+  initial_delay: 3
+
+wal:
+  enabled: true
+  log_dir: "/root/.openclaw/workspace/skills/workflows/logs"
+  alert_channels:
+    - type: "email"
+      recipient: "zhy20152015@qq.com"

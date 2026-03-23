@@ -1,0 +1,33 @@
+name: constitution-check
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+
+jobs:
+  constitution:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install test deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest pyyaml
+
+      - name: Constitution boundary check
+        run: python scripts/testing/check_constitution_boundaries.py
+
+      - name: Core constitution tests
+        run: |
+          pytest -q \
+            core/tests/test_skill_manager_smoke.py \
+            core/tests/test_base_agent_constitution.py \
+            core/tests/test_constitution_runtime.py

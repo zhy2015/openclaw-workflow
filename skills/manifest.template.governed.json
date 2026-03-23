@@ -1,0 +1,19 @@
+{
+  "name": "example-skill",
+  "version": "1.0.0",
+  "category": "automation",
+  "task_nodes": ["automation"],
+  "status": "experimental",
+  "visibility": "public",
+  "execution_type": "python_import",
+  "owner": "xiaoluyun",
+  "last_verified_at": "2026-03-20T00:00:00Z",
+  "actions": {
+    "run": {
+      "module": "scripts.run",
+      "function": "main",
+      "default_args": {},
+      "args": {}
+    }
+  }
+}

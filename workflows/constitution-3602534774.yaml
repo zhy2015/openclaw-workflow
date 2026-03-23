@@ -1,0 +1,29 @@
+workflow_id: constitution-3602534774
+name: 'Constitution slow task: dummy join graph'
+nodes:
+- id: left
+  skill_name: dummy
+  tool_name: ping
+  inputs:
+    x: L
+  outputs:
+  - message
+  next:
+  - join
+- id: right
+  skill_name: dummy
+  tool_name: ping
+  inputs:
+    x: R
+  outputs:
+  - message
+  next:
+  - join
+- id: join
+  skill_name: dummy
+  tool_name: join
+  inputs:
+    left: left.message
+    right: right.message
+  outputs:
+  - joined

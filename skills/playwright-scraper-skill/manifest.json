@@ -1,0 +1,19 @@
+{
+  "name": "playwright-scraper-skill",
+  "description": "Playwright-based web scraping",
+  "category": "search",
+  "version": "1.2.0",
+  "task_nodes": ["monitoring", "automation", "media"],
+  "status": "active",
+  "visibility": "public",
+  "owner": "xiaoluyun",
+  "last_verified_at": "2026-03-20T04:30:00Z",
+  "execution_type": "cli",
+  "actions": {
+    "run": {
+      "command": "node scripts/playwright-simple.js",
+      "description": "Default action migrated from _meta.json",
+      "args": {}
+    }
+  }
+}

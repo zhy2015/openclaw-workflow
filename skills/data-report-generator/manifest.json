@@ -1,0 +1,75 @@
+{
+  "name": "data-report-generator",
+  "description": "Automatically analyze CSV or Excel files and generate professional data analysis reports with charts, summaries, and insights — output as Word (.docx) or PDF.",
+  "category": "data",
+  "version": "1.0.0",
+  "task_nodes": [
+    "automation",
+    "media"
+  ],
+  "status": "archived",
+  "visibility": "hidden",
+  "execution_type": "python_import",
+  "owner": "workspace:local",
+  "last_verified_at": "2026-03-20T11:13:00Z",
+  "actions": {
+    "default_action": {
+      "description": "Default action migrated from v1",
+      "module": "scripts.generate_report",
+      "function": "main",
+      "args": {
+        "file_path": {
+          "type": "string",
+          "description": "Path to CSV or Excel file",
+          "required": true
+        },
+        "output_format": {
+          "type": "string",
+          "description": "Report output format",
+          "required": false,
+          "default": "docx",
+          "enum": [
+            "docx",
+            "pdf"
+          ]
+        },
+        "report_type": {
+          "type": "string",
+          "description": "Type of analysis/report",
+          "required": false,
+          "default": "comprehensive",
+          "enum": [
+            "comprehensive",
+            "sales",
+            "financial",
+            "operations",
+            "marketing"
+          ]
+        },
+        "key_questions": {
+          "type": "array",
+          "description": "Key questions to answer in the report",
+          "required": false
+        },
+        "language": {
+          "type": "string",
+          "description": "Report language",
+          "required": false,
+          "default": "auto",
+          "enum": [
+            "auto",
+            "zh",
+            "en"
+          ]
+        }
+      }
+    }
+  },
+  "routing": {
+    "startup_expose": false,
+    "startup_reason": "data_report_only",
+    "hints": [
+      "explicit_task_trigger_required"
+    ]
+  }
+}

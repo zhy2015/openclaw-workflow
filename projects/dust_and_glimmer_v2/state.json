@@ -1,0 +1,120 @@
+{
+  "project": "dust_and_glimmer",
+  "version": "v2",
+  "created_at": "2026-03-15T04:12:00Z",
+  "status": "partial",
+  "config": {
+    "rate_limit": {
+      "rpm": 60,
+      "tpm": 100000
+    },
+    "retry": {
+      "max": 5,
+      "backoff": [
+        1,
+        2,
+        4,
+        8,
+        16
+      ]
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "prompt": "沙漠废墟中，金色阳光穿透云层，照亮古老的石碑",
+      "status": "failed",
+      "video": null,
+      "retries": 5,
+      "error": "Process failed: Missing authorization. Pass --authorization or set OPENCLAW_AUTHORIZATION.\n",
+      "started_at": "2026-03-15T13:15:42.193952"
+    },
+    {
+      "id": 2,
+      "prompt": "主角从沙尘中苏醒，手中握着发光的水晶碎片",
+      "status": "failed",
+      "video": null,
+      "retries": 5,
+      "error": "Process failed: Missing authorization. Pass --authorization or set OPENCLAW_AUTHORIZATION.\n",
+      "started_at": "2026-03-15T13:15:57.975795"
+    },
+    {
+      "id": 3,
+      "prompt": "远处出现神秘绿洲，水波倒映着双月",
+      "status": "failed",
+      "video": null,
+      "retries": 5,
+      "error": "Process failed: Missing authorization. Pass --authorization or set OPENCLAW_AUTHORIZATION.\n",
+      "started_at": "2026-03-15T13:16:13.772339"
+    },
+    {
+      "id": 4,
+      "prompt": "主角穿越流沙陷阱，惊险一跃抓住悬崖边缘",
+      "status": "failed",
+      "video": null,
+      "retries": 5,
+      "error": "Process failed: Missing authorization. Pass --authorization or set OPENCLAW_AUTHORIZATION.\n",
+      "started_at": "2026-03-15T13:16:29.686456"
+    },
+    {
+      "id": 5,
+      "prompt": "地下神殿入口，古老符文在水晶光芒下苏醒",
+      "status": "failed",
+      "video": null,
+      "retries": 5,
+      "error": "Process failed: Missing authorization. Pass --authorization or set OPENCLAW_AUTHORIZATION.\n",
+      "started_at": "2026-03-15T13:16:45.463745"
+    },
+    {
+      "id": 6,
+      "prompt": "守护灵现身，由光尘构成的巨大人形",
+      "status": "failed",
+      "video": null,
+      "retries": 5,
+      "error": "Process failed: Missing authorization. Pass --authorization or set OPENCLAW_AUTHORIZATION.\n",
+      "started_at": "2026-03-15T13:17:01.250778"
+    },
+    {
+      "id": 7,
+      "prompt": "主角与守护灵对视，传递记忆与使命",
+      "status": "failed",
+      "video": null,
+      "retries": 5,
+      "error": "Process failed: Missing authorization. Pass --authorization or set OPENCLAW_AUTHORIZATION.\n",
+      "started_at": "2026-03-15T13:17:17.048309"
+    },
+    {
+      "id": 8,
+      "prompt": "神殿核心，水晶 throne 缓缓升起",
+      "status": "failed",
+      "video": null,
+      "retries": 5,
+      "error": "Process failed: Missing authorization. Pass --authorization or set OPENCLAW_AUTHORIZATION.\n",
+      "started_at": "2026-03-15T13:17:32.829338"
+    },
+    {
+      "id": 9,
+      "prompt": "主角将碎片归位，光芒爆发",
+      "status": "failed",
+      "video": null,
+      "retries": 5,
+      "error": "Process failed: Missing authorization. Pass --authorization or set OPENCLAW_AUTHORIZATION.\n",
+      "started_at": "2026-03-15T13:17:48.610439"
+    },
+    {
+      "id": 10,
+      "prompt": "沙漠变绿洲，生命重新绽放，主角背影远去",
+      "status": "failed",
+      "video": null,
+      "retries": 5,
+      "error": "Process failed: Missing authorization. Pass --authorization or set OPENCLAW_AUTHORIZATION.\n",
+      "started_at": "2026-03-15T13:18:04.394566"
+    }
+  ],
+  "completed_at": null,
+  "output": {
+    "final_video": "./assets/dust_and_glimmer_final.mp4",
+    "narration": "./assets/narration.mp3"
+  },
+  "updated_at": "2026-03-15T13:18:04.550786"
+}

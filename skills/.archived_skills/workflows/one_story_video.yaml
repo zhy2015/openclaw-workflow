@@ -1,0 +1,123 @@
+# Story to Video Workflow
+# 三节点 DAG：故事生成 -> 资源生成 -> 视频组装
+
+name: "one-story-video"
+version: "1.0.0"
+description: "OSV: One Story Video - 一键故事视频生成"
+
+runtime: "native"
+
+dependencies:
+  system:
+    - name: "ffmpeg"
+      version: ">=7.0"
+  python:
+    - name: "requests"
+      version: ">=2.28.0"
+  services:
+    - name: "hidream-api"
+      endpoint: "https://vivago.ai"
+      timeout: 300
+
+resources:
+  disk: "2GB"
+  memory: "1GB"
+  gpu: false
+
+inputs:
+  story_prompt:
+    type: "string"
+    description: "故事主题或完整剧本"
+    required: true
+    example: "一个赛博朋克风格的快递员在雨夜中传递神秘包裹"
+  
+  style:
+    type: "string"
+    description: "视觉风格"
+    required: false
+    default: "cyberpunk"
+    enum: ["cyberpunk", "realistic", "anime", "fantasy"]
+  
+  duration_per_scene:
+    type: "integer"
+    description: "每个场景的视频时长(秒)"
+    required: false
+    default: 5
+  
+  max_concurrent:
+    type: "integer"
+    description: "视频生成并发数（1-5，默认3）"
+    required: false
+    default: 3
+    minimum: 1
+    maximum: 5
+  
+  output_name:
+    type: "string"
+    description: "输出文件名"
+    required: false
+    default: "story_video"
+
+outputs:
+  final_video_path:
+    type: "string"
+    description: "最终合成视频路径"
+  scenes:
+    type: "array"
+    description: "各场景信息"
+  storyboard:
+    type: "object"
+    description: "分镜脚本"
+
+# DAG 工作流定义
+workflow:
+  name: "one-story-video"
+  nodes:
+    - id: "story_generator"
+      name: "Story Generator"
+      skill: "story_generator"  # 需要创建或使用 LLM 生成
+      inputs:
+        prompt: "$.inputs.story_prompt"
+        style: "$.inputs.style"
+        num_scenes: 3
+      outputs:
+        storyboard: "scenes"
+        prompts: "video_prompts"
+    
+    - id: "hidream_asset_gen"
+      name: "HiDream Asset Generation"
+      skill: "hidream_gen"
+      depends_on: ["story_generator"]
+      inputs:
+        prompts: "$.nodes.story_generator.outputs.prompts"
+        max_concurrent: "$.inputs.max_concurrent"
+      outputs:
+        assets: "assets"
+        status: "generation_status"
+    
+    - id: "video_assembly"
+      name: "Video Assembly"
+      skill: "video-production"
+      depends_on: ["hidream_asset_gen"]
+      inputs:
+        script_text: "$.nodes.story_generator.outputs.storyboard"
+        output_name: "$.inputs.output_name"
+        scene_videos: "$.nodes.hidream_asset_gen.outputs.assets"
+      outputs:
+        video_path: "final_video_path"
+        duration: "duration_seconds"
+
+circuit_breaker:
+  failure_threshold: 2
+  recovery_timeout: 600
+
+retry_policy:
+  max_attempts: 2
+  backoff: "exponential"
+  initial_delay: 10
+
+wal:
+  enabled: true
+  log_dir: "/root/.openclaw/workspace/skills/workflows/logs"
+  alert_channels:
+    - type: "console"

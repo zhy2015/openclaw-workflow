@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "purpose": "Reduce cold-start context by suppressing low-priority skill exposure in startup routing.",
+  "policy": {
+    "default_behavior": "Do not proactively surface these skills during startup or generic routing unless the task clearly requires them.",
+    "notes": [
+      "This list is a startup/routing suppression layer, not a deletion list.",
+      "Skills here may still be used when explicitly triggered by the task.",
+      "Prefer native tools and high-frequency public skills before considering suppressed skills."
+    ]
+  },
+  "suppressed_skills": [
+    {
+      "name": "self-improving-agent",
+      "reason": "Meta-governance skill; useful internally but should not influence normal user-task startup routing."
+    },
+    {
+      "name": "feishu-evolver-wrapper",
+      "reason": "Specialized evolver wrapper; not part of everyday task routing."
+    },
+    {
+      "name": "echo-skill",
+      "reason": "Smoke-test utility; no need to surface in normal user-facing task selection."
+    },
+    {
+      "name": "clash-auto-switch",
+      "reason": "Experimental infrastructure helper; only surface when proxy automation is explicitly relevant."
+    },
+    {
+      "name": "notion",
+      "reason": "Integration-specific; keep out of generic startup exposure unless Notion is requested."
+    },
+    {
+      "name": "qqmail",
+      "reason": "Mail-specific integration; only surface when email send/read/search is requested."
+    },
+    {
+      "name": "tencentcloud-lighthouse-skill",
+      "reason": "Highly specialized cloud skill; should not occupy default startup routing."
+    },
+    {
+      "name": "tikhub-api",
+      "reason": "Specialized external API skill; only relevant for explicit platform data tasks."
+    },
+    {
+      "name": "komori-sfx",
+      "reason": "Media-specialized effect skill; only relevant inside specific audio workflows."
+    },
+    {
+      "name": "pixabay-media",
+      "reason": "Asset-fetch helper; only relevant when sourcing stock media."
+    },
+    {
+      "name": "paddleocr-doc-parsing-v2",
+      "reason": "OCR-specific utility; defer until OCR/document parsing is explicitly needed."
+    },
+    {
+      "name": "hidream-api-gen",
+      "reason": "Model-specific generation helper; only relevant for explicit image/video generation tasks."
+    },
+    {
+      "name": "audio-mixer",
+      "reason": "Narrow media post-processing tool; avoid generic startup exposure."
+    },
+    {
+      "name": "sfx-generator",
+      "reason": "Specialized audio generation tool; defer until explicitly needed."
+    },
+    {
+      "name": "memory-to-notion",
+      "reason": "Bridge/integration utility; not needed in ordinary startup path."
+    },
+    {
+      "name": "feishu-doc-manager",
+      "reason": "Deprecated helper already superseded by higher-level Feishu workflow/native tools."
+    },
+    {
+      "name": "feishu-messaging",
+      "reason": "Deprecated helper already superseded by higher-level Feishu workflow/native tools."
+    }
+  ]
+}

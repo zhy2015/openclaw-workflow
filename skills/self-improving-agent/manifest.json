@@ -1,0 +1,38 @@
+{
+  "name": "self-improving-agent",
+  "version": "3.0.4",
+  "description": "Captures learnings, errors, and corrections to enable continuous improvement",
+  "category": "automation",
+  "task_nodes": [
+    "automation",
+    "governance",
+    "memory"
+  ],
+  "status": "archived",
+  "visibility": "hidden",
+  "execution_type": "cli",
+  "owner": "workspace:local",
+  "last_verified_at": "2026-03-20T11:04:00Z",
+  "entry_point": "scripts/log_learning.sh",
+  "actions": {
+    "log_error": {
+      "command": "bash scripts/log_learning.sh error",
+      "description": "Log an error to ERRORS.md"
+    },
+    "log_learning": {
+      "command": "bash scripts/log_learning.sh learning",
+      "description": "Log a learning to LEARNINGS.md"
+    },
+    "log_feature": {
+      "command": "bash scripts/log_learning.sh feature",
+      "description": "Log a feature request"
+    }
+  },
+  "routing": {
+    "startup_expose": false,
+    "startup_reason": "meta_governance_not_for_default_startup",
+    "hints": [
+      "explicit_task_trigger_required"
+    ]
+  }
+}

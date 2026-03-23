@@ -1,0 +1,5 @@
+{"timestamp": "2026-03-21T22:57:24.131223", "workflow_id": "constitution-fb049b361f", "task_id": "first", "status": "running", "metadata": {"skill_uri": null, "skill_name": "dummy", "tool_name": "ping"}}
+{"timestamp": "2026-03-21T22:57:24.136137", "workflow_id": "constitution-fb049b361f", "task_id": "boom", "status": "running", "metadata": {"skill_uri": null, "skill_name": "dummy", "tool_name": "fail"}}
+{"timestamp": "2026-03-21T22:57:24.137863", "workflow_id": "constitution-fb049b361f", "task_id": "first", "status": "success", "payload": {"first.message": "ok"}, "metadata": {"node_id": "first"}}
+{"timestamp": "2026-03-21T22:57:24.141367", "workflow_id": "constitution-fb049b361f", "task_id": "boom", "status": "failed", "error": "Pipeline failed at node: boom - forced failure", "metadata": {"node_id": "boom", "source": "runner_exception_handler"}}
+{"timestamp": "2026-03-21T22:57:24.147315", "workflow_id": "constitution-fb049b361f", "task_id": "boom", "status": "failed", "error": "forced failure", "metadata": {"node_id": "boom"}}

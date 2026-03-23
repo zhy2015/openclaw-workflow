@@ -1,0 +1,617 @@
+{
+  "generated_at": "2026-03-22T20:05:11.674721Z",
+  "nodes": {
+    "memory": [
+      {
+        "name": "csv-data-explorer",
+        "task_nodes": [
+          "automation",
+          "memory"
+        ],
+        "status": "experimental",
+        "visibility": "public",
+        "category": "data",
+        "startup_expose": false
+      },
+      {
+        "name": "feishu-workflow",
+        "task_nodes": [
+          "social",
+          "automation",
+          "memory"
+        ],
+        "status": "active",
+        "visibility": "public",
+        "category": "social",
+        "startup_expose": true
+      },
+      {
+        "name": "memory-master",
+        "task_nodes": [
+          "memory",
+          "governance",
+          "automation"
+        ],
+        "status": "active",
+        "visibility": "public",
+        "category": "knowledge",
+        "startup_expose": true
+      },
+      {
+        "name": "memory-to-notion",
+        "task_nodes": [
+          "memory",
+          "automation"
+        ],
+        "status": "experimental",
+        "visibility": "internal",
+        "category": "integration",
+        "startup_expose": false
+      }
+    ],
+    "media": [
+      {
+        "name": "audio-mixer",
+        "task_nodes": [
+          "media"
+        ],
+        "status": "experimental",
+        "visibility": "internal",
+        "category": "media",
+        "startup_expose": false
+      },
+      {
+        "name": "hidream-api-gen",
+        "task_nodes": [
+          "media",
+          "automation"
+        ],
+        "status": "experimental",
+        "visibility": "internal",
+        "category": "media",
+        "startup_expose": false
+      },
+      {
+        "name": "komori-sfx",
+        "task_nodes": [
+          "media",
+          "automation"
+        ],
+        "status": "experimental",
+        "visibility": "internal",
+        "category": "media",
+        "startup_expose": false
+      },
+      {
+        "name": "paddleocr-doc-parsing-v2",
+        "task_nodes": [
+          "automation",
+          "media"
+        ],
+        "status": "experimental",
+        "visibility": "internal",
+        "category": "data",
+        "startup_expose": false
+      },
+      {
+        "name": "pixabay-media",
+        "task_nodes": [
+          "media",
+          "automation"
+        ],
+        "status": "experimental",
+        "visibility": "internal",
+        "category": "media",
+        "startup_expose": false
+      },
+      {
+        "name": "playwright-scraper-skill",
+        "task_nodes": [
+          "monitoring",
+          "automation",
+          "media"
+        ],
+        "status": "active",
+        "visibility": "public",
+        "category": "search",
+        "startup_expose": true
+      },
+      {
+        "name": "sfx-generator",
+        "task_nodes": [
+          "media",
+          "automation"
+        ],
+        "status": "experimental",
+        "visibility": "internal",
+        "category": "media",
+        "startup_expose": false
+      }
+    ],
+    "monitoring": [
+      {
+        "name": "clash-auto-switch",
+        "task_nodes": [
+          "automation",
+          "monitoring"
+        ],
+        "status": "experimental",
+        "visibility": "internal",
+        "category": "network",
+        "startup_expose": false
+      },
+      {
+        "name": "clash-vpn",
+        "task_nodes": [
+          "automation",
+          "monitoring"
+        ],
+        "status": "active",
+        "visibility": "internal",
+        "category": "network",
+        "startup_expose": true
+      },
+      {
+        "name": "firecrawler",
+        "task_nodes": [
+          "monitoring",
+          "automation"
+        ],
+        "status": "experimental",
+        "visibility": "public",
+        "category": "search",
+        "startup_expose": false
+      },
+      {
+        "name": "playwright-scraper-skill",
+        "task_nodes": [
+          "monitoring",
+          "automation",
+          "media"
+        ],
+        "status": "active",
+        "visibility": "public",
+        "category": "search",
+        "startup_expose": true
+      },
+      {
+        "name": "tikhub-api",
+        "task_nodes": [
+          "automation",
+          "social",
+          "monitoring"
+        ],
+        "status": "experimental",
+        "visibility": "internal",
+        "category": "search",
+        "startup_expose": false
+      }
+    ],
+    "automation": [
+      {
+        "name": "clash-auto-switch",
+        "task_nodes": [
+          "automation",
+          "monitoring"
+        ],
+        "status": "experimental",
+        "visibility": "internal",
+        "category": "network",
+        "startup_expose": false
+      },
+      {
+        "name": "clash-vpn",
+        "task_nodes": [
+          "automation",
+          "monitoring"
+        ],
+        "status": "active",
+        "visibility": "internal",
+        "category": "network",
+        "startup_expose": true
+      },
+      {
+        "name": "csv-data-explorer",
+        "task_nodes": [
+          "automation",
+          "memory"
+        ],
+        "status": "experimental",
+        "visibility": "public",
+        "category": "data",
+        "startup_expose": false
+      },
+      {
+        "name": "echo-skill",
+        "task_nodes": [
+          "governance",
+          "automation"
+        ],
+        "status": "experimental",
+        "visibility": "internal",
+        "category": "test",
+        "startup_expose": false
+      },
+      {
+        "name": "feishu-evolver-wrapper",
+        "task_nodes": [
+          "automation",
+          "governance",
+          "social"
+        ],
+        "status": "experimental",
+        "visibility": "internal",
+        "category": "automation",
+        "startup_expose": false
+      },
+      {
+        "name": "feishu-workflow",
+        "task_nodes": [
+          "social",
+          "automation",
+          "memory"
+        ],
+        "status": "active",
+        "visibility": "public",
+        "category": "social",
+        "startup_expose": true
+      },
+      {
+        "name": "firecrawler",
+        "task_nodes": [
+          "monitoring",
+          "automation"
+        ],
+        "status": "experimental",
+        "visibility": "public",
+        "category": "search",
+        "startup_expose": false
+      },
+      {
+        "name": "hidream-api-gen",
+        "task_nodes": [
+          "media",
+          "automation"
+        ],
+        "status": "experimental",
+        "visibility": "internal",
+        "category": "media",
+        "startup_expose": false
+      },
+      {
+        "name": "komori-sfx",
+        "task_nodes": [
+          "media",
+          "automation"
+        ],
+        "status": "experimental",
+        "visibility": "internal",
+        "category": "media",
+        "startup_expose": false
+      },
+      {
+        "name": "memory-master",
+        "task_nodes": [
+          "memory",
+          "governance",
+          "automation"
+        ],
+        "status": "active",
+        "visibility": "public",
+        "category": "knowledge",
+        "startup_expose": true
+      },
+      {
+        "name": "memory-to-notion",
+        "task_nodes": [
+          "memory",
+          "automation"
+        ],
+        "status": "experimental",
+        "visibility": "internal",
+        "category": "integration",
+        "startup_expose": false
+      },
+      {
+        "name": "paddleocr-doc-parsing-v2",
+        "task_nodes": [
+          "automation",
+          "media"
+        ],
+        "status": "experimental",
+        "visibility": "internal",
+        "category": "data",
+        "startup_expose": false
+      },
+      {
+        "name": "pixabay-media",
+        "task_nodes": [
+          "media",
+          "automation"
+        ],
+        "status": "experimental",
+        "visibility": "internal",
+        "category": "media",
+        "startup_expose": false
+      },
+      {
+        "name": "playwright-scraper-skill",
+        "task_nodes": [
+          "monitoring",
+          "automation",
+          "media"
+        ],
+        "status": "active",
+        "visibility": "public",
+        "category": "search",
+        "startup_expose": true
+      },
+      {
+        "name": "qqmail",
+        "task_nodes": [
+          "automation",
+          "social"
+        ],
+        "status": "experimental",
+        "visibility": "internal",
+        "category": "integration",
+        "startup_expose": false
+      },
+      {
+        "name": "sfx-generator",
+        "task_nodes": [
+          "media",
+          "automation"
+        ],
+        "status": "experimental",
+        "visibility": "internal",
+        "category": "media",
+        "startup_expose": false
+      },
+      {
+        "name": "tikhub-api",
+        "task_nodes": [
+          "automation",
+          "social",
+          "monitoring"
+        ],
+        "status": "experimental",
+        "visibility": "internal",
+        "category": "search",
+        "startup_expose": false
+      }
+    ],
+    "governance": [
+      {
+        "name": "echo-skill",
+        "task_nodes": [
+          "governance",
+          "automation"
+        ],
+        "status": "experimental",
+        "visibility": "internal",
+        "category": "test",
+        "startup_expose": false
+      },
+      {
+        "name": "feishu-evolver-wrapper",
+        "task_nodes": [
+          "automation",
+          "governance",
+          "social"
+        ],
+        "status": "experimental",
+        "visibility": "internal",
+        "category": "automation",
+        "startup_expose": false
+      },
+      {
+        "name": "memory-master",
+        "task_nodes": [
+          "memory",
+          "governance",
+          "automation"
+        ],
+        "status": "active",
+        "visibility": "public",
+        "category": "knowledge",
+        "startup_expose": true
+      }
+    ],
+    "coding": [],
+    "social": [
+      {
+        "name": "feishu-evolver-wrapper",
+        "task_nodes": [
+          "automation",
+          "governance",
+          "social"
+        ],
+        "status": "experimental",
+        "visibility": "internal",
+        "category": "automation",
+        "startup_expose": false
+      },
+      {
+        "name": "feishu-workflow",
+        "task_nodes": [
+          "social",
+          "automation",
+          "memory"
+        ],
+        "status": "active",
+        "visibility": "public",
+        "category": "social",
+        "startup_expose": true
+      },
+      {
+        "name": "qqmail",
+        "task_nodes": [
+          "automation",
+          "social"
+        ],
+        "status": "experimental",
+        "visibility": "internal",
+        "category": "integration",
+        "startup_expose": false
+      },
+      {
+        "name": "tikhub-api",
+        "task_nodes": [
+          "automation",
+          "social",
+          "monitoring"
+        ],
+        "status": "experimental",
+        "visibility": "internal",
+        "category": "search",
+        "startup_expose": false
+      }
+    ]
+  },
+  "startup_nodes": {
+    "memory": [
+      {
+        "name": "feishu-workflow",
+        "task_nodes": [
+          "social",
+          "automation",
+          "memory"
+        ],
+        "status": "active",
+        "visibility": "public",
+        "category": "social",
+        "startup_expose": true
+      },
+      {
+        "name": "memory-master",
+        "task_nodes": [
+          "memory",
+          "governance",
+          "automation"
+        ],
+        "status": "active",
+        "visibility": "public",
+        "category": "knowledge",
+        "startup_expose": true
+      }
+    ],
+    "media": [
+      {
+        "name": "playwright-scraper-skill",
+        "task_nodes": [
+          "monitoring",
+          "automation",
+          "media"
+        ],
+        "status": "active",
+        "visibility": "public",
+        "category": "search",
+        "startup_expose": true
+      }
+    ],
+    "monitoring": [
+      {
+        "name": "clash-vpn",
+        "task_nodes": [
+          "automation",
+          "monitoring"
+        ],
+        "status": "active",
+        "visibility": "internal",
+        "category": "network",
+        "startup_expose": true
+      },
+      {
+        "name": "playwright-scraper-skill",
+        "task_nodes": [
+          "monitoring",
+          "automation",
+          "media"
+        ],
+        "status": "active",
+        "visibility": "public",
+        "category": "search",
+        "startup_expose": true
+      }
+    ],
+    "automation": [
+      {
+        "name": "clash-vpn",
+        "task_nodes": [
+          "automation",
+          "monitoring"
+        ],
+        "status": "active",
+        "visibility": "internal",
+        "category": "network",
+        "startup_expose": true
+      },
+      {
+        "name": "feishu-workflow",
+        "task_nodes": [
+          "social",
+          "automation",
+          "memory"
+        ],
+        "status": "active",
+        "visibility": "public",
+        "category": "social",
+        "startup_expose": true
+      },
+      {
+        "name": "memory-master",
+        "task_nodes": [
+          "memory",
+          "governance",
+          "automation"
+        ],
+        "status": "active",
+        "visibility": "public",
+        "category": "knowledge",
+        "startup_expose": true
+      },
+      {
+        "name": "playwright-scraper-skill",
+        "task_nodes": [
+          "monitoring",
+          "automation",
+          "media"
+        ],
+        "status": "active",
+        "visibility": "public",
+        "category": "search",
+        "startup_expose": true
+      }
+    ],
+    "governance": [
+      {
+        "name": "memory-master",
+        "task_nodes": [
+          "memory",
+          "governance",
+          "automation"
+        ],
+        "status": "active",
+        "visibility": "public",
+        "category": "knowledge",
+        "startup_expose": true
+      }
+    ],
+    "coding": [],
+    "social": [
+      {
+        "name": "feishu-workflow",
+        "task_nodes": [
+          "social",
+          "automation",
+          "memory"
+        ],
+        "status": "active",
+        "visibility": "public",
+        "category": "social",
+        "startup_expose": true
+      }
+    ]
+  }
+}

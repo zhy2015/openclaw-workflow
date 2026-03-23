@@ -1,0 +1,74 @@
+{
+  "name": "qqmail",
+  "description": "Manage QQ Mail (QQ邮箱) via IMAP/SMTP. Supports reading inbox, sending emails with attachments, searching by subject/sender/date.",
+  "category": "integration",
+  "version": "1.0.0",
+  "task_nodes": [
+    "automation",
+    "social"
+  ],
+  "status": "experimental",
+  "visibility": "internal",
+  "execution_type": "python_import",
+  "owner": "workspace:local",
+  "last_verified_at": "2026-03-20T11:08:00Z",
+  "actions": {
+    "default_action": {
+      "description": "Default action migrated from v1",
+      "module": "scripts.qqmail",
+      "function": "main",
+      "args": {
+        "action": {
+          "type": "string",
+          "description": "Action to perform: inbox, read, send, search, folders",
+          "required": true,
+          "enum": [
+            "inbox",
+            "read",
+            "send",
+            "search",
+            "folders"
+          ]
+        },
+        "to": {
+          "type": "string",
+          "description": "Recipient email address (for send action)",
+          "required": false
+        },
+        "subject": {
+          "type": "string",
+          "description": "Email subject",
+          "required": false
+        },
+        "body": {
+          "type": "string",
+          "description": "Email body content",
+          "required": false
+        },
+        "attachment": {
+          "type": "string",
+          "description": "Path to attachment file",
+          "required": false
+        },
+        "limit": {
+          "type": "integer",
+          "description": "Number of emails to fetch",
+          "required": false,
+          "default": 10
+        },
+        "index": {
+          "type": "integer",
+          "description": "Email index to read",
+          "required": false
+        }
+      }
+    }
+  },
+  "routing": {
+    "startup_expose": false,
+    "startup_reason": "integration_only",
+    "hints": [
+      "explicit_task_trigger_required"
+    ]
+  }
+}

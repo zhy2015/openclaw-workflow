@@ -1,0 +1,101 @@
+{
+  "name": "hidream-api-gen",
+  "version": "1.0.0",
+  "description": "多模态内容生成与灵感引擎执行器",
+  "category": "media",
+  "task_nodes": [
+    "media",
+    "automation"
+  ],
+  "status": "experimental",
+  "visibility": "internal",
+  "execution_type": "python_import",
+  "owner": "workspace:local",
+  "last_verified_at": "2026-03-20T11:08:00Z",
+  "entry_point": "scripts.seedream",
+  "actions": {
+    "generate_images": {
+      "module": "scripts.seedream",
+      "function": "run",
+      "default_args": {
+        "version": "M2",
+        "resolution": "2048*2048"
+      },
+      "args": {
+        "prompt": {
+          "type": "string",
+          "required": true
+        },
+        "version": {
+          "type": "string",
+          "default": "M2"
+        },
+        "resolution": {
+          "type": "string",
+          "default": "2048*2048"
+        },
+        "authorization": {
+          "type": "string",
+          "from_env": "HIDREAM_AUTHORIZATION"
+        }
+      },
+      "outputs": [
+        "task_id",
+        "image_url",
+        "status"
+      ]
+    },
+    "generate_video": {
+      "module": "scripts.kling",
+      "function": "run",
+      "args": {
+        "prompt": {
+          "type": "string",
+          "required": true
+        },
+        "version": {
+          "type": "string",
+          "default": "Q2.5T-std"
+        },
+        "duration": {
+          "type": "number",
+          "default": 5
+        }
+      },
+      "outputs": [
+        "task_id",
+        "video_url",
+        "status"
+      ]
+    },
+    "check_status": {
+      "module": "scripts.common.task_client",
+      "function": "check_task_status",
+      "args": {
+        "task_id": {
+          "type": "string",
+          "required": true
+        }
+      },
+      "outputs": [
+        "status",
+        "progress",
+        "result"
+      ]
+    }
+  },
+  "dependencies": [
+    "python3",
+    "requests"
+  ],
+  "config_required": [
+    "HIDREAM_AUTHORIZATION"
+  ],
+  "routing": {
+    "startup_expose": false,
+    "startup_reason": "model_specific_generation_only",
+    "hints": [
+      "explicit_task_trigger_required"
+    ]
+  }
+}

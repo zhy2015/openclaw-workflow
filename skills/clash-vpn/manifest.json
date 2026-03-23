@@ -1,0 +1,42 @@
+{
+  "name": "clash-vpn",
+  "version": "1.0.0",
+  "description": "管理 Clash VPN 代理服务",
+  "category": "network",
+  "task_nodes": ["automation", "monitoring"],
+  "status": "active",
+  "visibility": "internal",
+  "owner": "xiaoluyun",
+  "last_verified_at": "2026-03-20T04:30:00Z",
+  "execution_type": "cli",
+  "entry_point": "scripts/clash-vpn.sh",
+  "actions": {
+    "start": {
+      "command": "bash {entry_point} start",
+      "args": {},
+      "outputs": ["stdout", "stderr"]
+    },
+    "stop": {
+      "command": "bash {entry_point} stop",
+      "args": {},
+      "outputs": ["stdout", "stderr"]
+    },
+    "restart": {
+      "command": "bash {entry_point} restart",
+      "args": {},
+      "outputs": ["stdout", "stderr"]
+    },
+    "status": {
+      "command": "bash {entry_point} status",
+      "args": {},
+      "outputs": ["stdout", "stderr"]
+    },
+    "test": {
+      "command": "bash {entry_point} test",
+      "args": {},
+      "outputs": ["stdout", "stderr"]
+    }
+  },
+  "dependencies": ["bash", "clash"],
+  "config_required": []
+}

@@ -1,0 +1,18 @@
+workflow_id: test-chaos-core
+name: Test Chaos Core Workflow
+nodes:
+  - id: node_a
+    skill_name: echo-skill
+    tool_name: default_action
+    inputs:
+      action: print_hello
+    outputs: [message, status, node]
+    next: [node_fail]
+
+  - id: node_fail
+    skill_name: echo-skill
+    tool_name: default_action
+    inputs:
+      action: force_fail
+      prev_output: node_a.message
+    outputs: [message, status, node]

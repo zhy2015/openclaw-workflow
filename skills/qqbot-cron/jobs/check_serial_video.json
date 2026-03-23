@@ -1,0 +1,21 @@
+{
+  "action": "add",
+  "job": {
+    "name": "check_serial_video",
+    "schedule": {
+      "kind": "cron",
+      "expr": "*/30 * * * *",
+      "tz": "Asia/Shanghai"
+    },
+    "sessionTarget": "isolated",
+    "wakeMode": "now",
+    "deleteAfterRun": false,
+    "payload": {
+      "kind": "agentTurn",
+      "message": "请检查 `~/.openclaw/workspace/story_recovery/RENDER_COMPLETE.flag` 文件是否存在。如果存在，请运行 `python3 ~/.openclaw/workspace/compose_video.py`（注意修改里面的路径指向 story_recovery），然后将生成的合并版 MP4 通过 qqmail 发送给 zhy20152015@qq.com，最后用 `openclaw cron remove check_serial_video` 删掉这个定时任务。如果没完成，请保持沉默（直接回复 HEARTBEAT_OK）。",
+      "deliver": true,
+      "channel": "qqbot",
+      "to": "7B92AFD049E25A85E83C8FEB7CC0AA24"
+    }
+  }
+}

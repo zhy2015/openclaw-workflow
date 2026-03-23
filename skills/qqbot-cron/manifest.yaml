@@ -1,0 +1,58 @@
+name: "qqbot-cron"
+version: "1.0.0"
+description: "QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。"
+
+runtime: "native"
+
+dependencies:
+  system:
+    - name: "python3"
+      version: ">=3.8"
+  python: []
+  services: []
+
+resources:
+  disk: "50MB"
+  memory: "64MB"
+  gpu: false
+
+entrypoint:
+  module: "scripts.qqbot_cron"
+  function: "schedule"
+
+inputs:
+  action:
+    type: "string"
+    description: "Action"
+    required: true
+    enum: ["add", "list", "cancel"]
+  
+  reminder_text:
+    type: "string"
+    description: "Reminder content"
+    required: false
+  
+  at_minutes:
+    type: "integer"
+    description: "Minutes from now"
+    required: false
+
+outputs:
+  job_id:
+    type: "string"
+    description: "Scheduled job ID"
+  
+  jobs:
+    type: "array"
+    description: "List of scheduled jobs"
+
+workflow:
+  name: "qqbot-cron-single"
+  nodes:
+    - id: "schedule"
+      name: "Schedule Reminder"
+      skill: "qqbot-cron"
+      inputs:
+        action: "$.inputs.action"
+        reminder_text: "$.inputs.reminder_text"
+        at_minutes: "$.inputs.at_minutes"

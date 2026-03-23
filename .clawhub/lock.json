@@ -1,0 +1,129 @@
+{
+  "version": 1,
+  "skills": {
+    "tavily-search": {
+      "version": "1.0.0",
+      "installedAt": 1773895322827
+    },
+    "summarize": {
+      "version": "1.0.0",
+      "installedAt": 1773895323730
+    },
+    "agent-browser": {
+      "version": "0.2.0",
+      "installedAt": 1773895324544
+    },
+    "find-skills": {
+      "version": "0.1.0",
+      "installedAt": 1773895325336
+    },
+    "github": {
+      "version": "1.0.0",
+      "installedAt": 1773895326177
+    },
+    "obsidian": {
+      "version": "1.0.0",
+      "installedAt": 1773895327071
+    },
+    "notion": {
+      "version": "1.0.0",
+      "installedAt": 1772179754667
+    },
+    "weather": {
+      "version": "1.0.0",
+      "installedAt": 1773895328066
+    },
+    "tencentcloud-lighthouse-skill": {
+      "version": "1.0.0",
+      "installedAt": 1772179839761
+    },
+    "clash-vpn": {
+      "version": "1.0.0",
+      "installedAt": 1773191709545
+    },
+    "memory-dedup": {
+      "version": "1.0.0",
+      "installedAt": 1773220857936
+    },
+    "memory-to-notion": {
+      "version": "1.0.4",
+      "installedAt": 1773220908690
+    },
+    "openclaw-ops-guardrails": {
+      "version": "0.1.1",
+      "installedAt": 1773221639295
+    },
+    "skill-safety-checker": {
+      "version": "1.0.0",
+      "installedAt": 1773222455739
+    },
+    "restart-recovery": {
+      "version": "1.0.0",
+      "installedAt": 1773222896185
+    },
+    "csv-data-explorer": {
+      "version": "1.0.0",
+      "installedAt": 1773222897019
+    },
+    "data-report-generator": {
+      "version": "1.0.0",
+      "installedAt": 1773222897925
+    },
+    "qqmail-sender": {
+      "version": "1.1.0",
+      "installedAt": 1773281415745
+    },
+    "qqmail": {
+      "version": "1.0.0",
+      "installedAt": 1773282729975
+    },
+    "proactive-agent-lite": {
+      "version": "1.0.0",
+      "installedAt": 1773412509870
+    },
+    "capability-evolver": {
+      "version": "1.29.5",
+      "installedAt": 1773412533831
+    },
+    "proactive-agent-skill": {
+      "version": "1.0.0",
+      "installedAt": 1773412564390
+    },
+    "playwright-scraper-skill": {
+      "version": "1.2.0",
+      "installedAt": 1773845958243
+    },
+    "firecrawler": {
+      "version": "1.0.0",
+      "installedAt": 1773846161865
+    },
+    "self-improving-agent": {
+      "version": "1.0.11",
+      "installedAt": 1773897259589
+    },
+    "proactive-agent": {
+      "version": "3.1.0",
+      "installedAt": 1773897262592
+    },
+    "feishu-evolver-wrapper": {
+      "version": "1.7.1",
+      "installedAt": 1773986275282
+    },
+    "feishu-messaging": {
+      "version": "0.0.3",
+      "installedAt": 1773986276527
+    },
+    "feishu-doc-manager": {
+      "version": "1.0.0",
+      "installedAt": 1773986277825
+    },
+    "receiving-code-review": {
+      "version": "0.1.0",
+      "installedAt": 1774068524156
+    },
+    "architecture-designer": {
+      "version": "0.1.0",
+      "installedAt": 1774068525321
+    }
+  }
+}

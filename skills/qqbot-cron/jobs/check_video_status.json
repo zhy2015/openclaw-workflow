@@ -1,0 +1,21 @@
+{
+  "action": "add",
+  "job": {
+    "name": "check_video_status",
+    "schedule": {
+      "kind": "cron",
+      "expr": "*/30 * * * *",
+      "tz": "Asia/Shanghai"
+    },
+    "sessionTarget": "isolated",
+    "wakeMode": "now",
+    "deleteAfterRun": false,
+    "payload": {
+      "kind": "agentTurn",
+      "message": "请检查 `~/.openclaw/workspace/story_recovery/real_video_*.mp4` 这 10 个文件是否都已经生成且大于 1000 字节。如果 10 个全部生成完毕，请调用 ffmpeg 合并成 `dust_and_glimmer_final.mp4` 并通过 qqmail 发送到 zhy20152015@qq.com，然后取消这个定时任务。如果没完成，请保持沉默（直接回复 HEARTBEAT_OK）。如果有报错或 API 停滞，请向用户汇报异常状态。",
+      "deliver": true,
+      "channel": "qqbot",
+      "to": "7B92AFD049E25A85E83C8FEB7CC0AA24"
+    }
+  }
+}

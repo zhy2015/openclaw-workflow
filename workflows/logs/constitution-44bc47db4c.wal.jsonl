@@ -1,0 +1,6 @@
+{"timestamp": "2026-03-22T18:08:53.039547", "workflow_id": "constitution-44bc47db4c", "task_id": "left", "status": "running", "metadata": {"skill_uri": null, "skill_name": "dummy", "tool_name": "ping"}}
+{"timestamp": "2026-03-22T18:08:53.045581", "workflow_id": "constitution-44bc47db4c", "task_id": "right", "status": "running", "metadata": {"skill_uri": null, "skill_name": "dummy", "tool_name": "ping"}}
+{"timestamp": "2026-03-22T18:08:53.051002", "workflow_id": "constitution-44bc47db4c", "task_id": "join", "status": "running", "metadata": {"skill_uri": null, "skill_name": "dummy", "tool_name": "join"}}
+{"timestamp": "2026-03-22T18:08:53.057748", "workflow_id": "constitution-44bc47db4c", "task_id": "left", "status": "success", "payload": {"left.message": "L"}, "metadata": {"node_id": "left"}}
+{"timestamp": "2026-03-22T18:08:53.064371", "workflow_id": "constitution-44bc47db4c", "task_id": "right", "status": "success", "payload": {"right.message": "R"}, "metadata": {"node_id": "right"}}
+{"timestamp": "2026-03-22T18:08:53.076422", "workflow_id": "constitution-44bc47db4c", "task_id": "join", "status": "success", "payload": {"join.joined": "L|R"}, "metadata": {"node_id": "join"}}

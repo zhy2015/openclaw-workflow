@@ -1,0 +1,322 @@
+{
+  "summary": {
+    "total_skills": 28,
+    "missing_governance_fields": 0,
+    "missing_skill_md": 0,
+    "gitlink_skills": 0,
+    "zero_usage": 2,
+    "active_public": 3
+  },
+  "skills": [
+    {
+      "skill": "audio-mixer",
+      "path": "/root/.openclaw/workspace/skills/audio-mixer",
+      "usage_count": 1,
+      "status": "experimental",
+      "visibility": "internal",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": [
+        "has usage; consider promoting to active if stable"
+      ]
+    },
+    {
+      "skill": "clash-auto-switch",
+      "path": "/root/.openclaw/workspace/skills/clash-auto-switch",
+      "usage_count": 1,
+      "status": "experimental",
+      "visibility": "internal",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": [
+        "has usage; consider promoting to active if stable"
+      ]
+    },
+    {
+      "skill": "clash-vpn",
+      "path": "/root/.openclaw/workspace/skills/clash-vpn",
+      "usage_count": 1,
+      "status": "active",
+      "visibility": "internal",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": []
+    },
+    {
+      "skill": "cli-anything-drawio",
+      "path": "/root/.openclaw/workspace/skills/cli-anything-drawio",
+      "usage_count": 1,
+      "status": "archived",
+      "visibility": "hidden",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": []
+    },
+    {
+      "skill": "csv-data-explorer",
+      "path": "/root/.openclaw/workspace/skills/csv-data-explorer",
+      "usage_count": 1,
+      "status": "experimental",
+      "visibility": "public",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": [
+        "has usage; consider promoting to active if stable"
+      ]
+    },
+    {
+      "skill": "data-report-generator",
+      "path": "/root/.openclaw/workspace/skills/data-report-generator",
+      "usage_count": 1,
+      "status": "archived",
+      "visibility": "hidden",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": []
+    },
+    {
+      "skill": "echo-skill",
+      "path": "/root/.openclaw/workspace/skills/echo-skill",
+      "usage_count": 1,
+      "status": "experimental",
+      "visibility": "internal",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": [
+        "has usage; consider promoting to active if stable"
+      ]
+    },
+    {
+      "skill": "feishu-doc-manager",
+      "path": "/root/.openclaw/workspace/skills/feishu-doc-manager",
+      "usage_count": 2,
+      "status": "deprecated",
+      "visibility": "internal",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": []
+    },
+    {
+      "skill": "feishu-evolver-wrapper",
+      "path": "/root/.openclaw/workspace/skills/feishu-evolver-wrapper",
+      "usage_count": 2,
+      "status": "experimental",
+      "visibility": "internal",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": [
+        "has usage; consider promoting to active if stable"
+      ]
+    },
+    {
+      "skill": "feishu-messaging",
+      "path": "/root/.openclaw/workspace/skills/feishu-messaging",
+      "usage_count": 2,
+      "status": "deprecated",
+      "visibility": "internal",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": []
+    },
+    {
+      "skill": "feishu-workflow",
+      "path": "/root/.openclaw/workspace/skills/feishu-workflow",
+      "usage_count": 1,
+      "status": "active",
+      "visibility": "public",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": []
+    },
+    {
+      "skill": "firecrawler",
+      "path": "/root/.openclaw/workspace/skills/firecrawler",
+      "usage_count": 0,
+      "status": "experimental",
+      "visibility": "public",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": [
+        "no successful usage found; consider experimental or archived"
+      ]
+    },
+    {
+      "skill": "hidream-api-gen",
+      "path": "/root/.openclaw/workspace/skills/hidream-api-gen",
+      "usage_count": 2,
+      "status": "experimental",
+      "visibility": "internal",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": [
+        "has usage; consider promoting to active if stable"
+      ]
+    },
+    {
+      "skill": "komori-sfx",
+      "path": "/root/.openclaw/workspace/skills/komori-sfx",
+      "usage_count": 1,
+      "status": "experimental",
+      "visibility": "internal",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": [
+        "has usage; consider promoting to active if stable"
+      ]
+    },
+    {
+      "skill": "memory-master",
+      "path": "/root/.openclaw/workspace/skills/memory-master",
+      "usage_count": 1,
+      "status": "active",
+      "visibility": "public",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": []
+    },
+    {
+      "skill": "memory-to-notion",
+      "path": "/root/.openclaw/workspace/skills/memory-to-notion",
+      "usage_count": 1,
+      "status": "experimental",
+      "visibility": "internal",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": [
+        "has usage; consider promoting to active if stable"
+      ]
+    },
+    {
+      "skill": "notion",
+      "path": "/root/.openclaw/workspace/skills/notion",
+      "usage_count": 1,
+      "status": "archived",
+      "visibility": "hidden",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": []
+    },
+    {
+      "skill": "one-story-video",
+      "path": "/root/.openclaw/workspace/skills/one-story-video",
+      "usage_count": 1,
+      "status": "archived",
+      "visibility": "hidden",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": []
+    },
+    {
+      "skill": "paddleocr-doc-parsing-v2",
+      "path": "/root/.openclaw/workspace/skills/paddleocr-doc-parsing-v2",
+      "usage_count": 1,
+      "status": "experimental",
+      "visibility": "internal",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": [
+        "has usage; consider promoting to active if stable"
+      ]
+    },
+    {
+      "skill": "pixabay-media",
+      "path": "/root/.openclaw/workspace/skills/pixabay-media",
+      "usage_count": 1,
+      "status": "experimental",
+      "visibility": "internal",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": [
+        "has usage; consider promoting to active if stable"
+      ]
+    },
+    {
+      "skill": "playwright-scraper-skill",
+      "path": "/root/.openclaw/workspace/skills/playwright-scraper-skill",
+      "usage_count": 1,
+      "status": "active",
+      "visibility": "public",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": []
+    },
+    {
+      "skill": "proactive-agent",
+      "path": "/root/.openclaw/workspace/skills/proactive-agent",
+      "usage_count": 1,
+      "status": "archived",
+      "visibility": "hidden",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": []
+    },
+    {
+      "skill": "qqbot-cron",
+      "path": "/root/.openclaw/workspace/skills/qqbot-cron",
+      "usage_count": 0,
+      "status": "archived",
+      "visibility": "hidden",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": [
+        "no successful usage found; consider experimental or archived"
+      ]
+    },
+    {
+      "skill": "qqmail",
+      "path": "/root/.openclaw/workspace/skills/qqmail",
+      "usage_count": 1,
+      "status": "experimental",
+      "visibility": "internal",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": [
+        "has usage; consider promoting to active if stable"
+      ]
+    },
+    {
+      "skill": "self-improving-agent",
+      "path": "/root/.openclaw/workspace/skills/self-improving-agent",
+      "usage_count": 1,
+      "status": "archived",
+      "visibility": "hidden",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": []
+    },
+    {
+      "skill": "sfx-generator",
+      "path": "/root/.openclaw/workspace/skills/sfx-generator",
+      "usage_count": 1,
+      "status": "experimental",
+      "visibility": "internal",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": [
+        "has usage; consider promoting to active if stable"
+      ]
+    },
+    {
+      "skill": "tencentcloud-lighthouse-skill",
+      "path": "/root/.openclaw/workspace/skills/tencentcloud-lighthouse-skill",
+      "usage_count": 1,
+      "status": "archived",
+      "visibility": "hidden",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": []
+    },
+    {
+      "skill": "tikhub-api",
+      "path": "/root/.openclaw/workspace/skills/tikhub-api",
+      "usage_count": 1,
+      "status": "experimental",
+      "visibility": "internal",
+      "is_gitlink": false,
+      "issues": [],
+      "suggestions": [
+        "has usage; consider promoting to active if stable"
+      ]
+    }
+  ]
+}

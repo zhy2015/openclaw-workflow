@@ -1,0 +1,9 @@
+workflow_id: constitution-6e22a6845a
+name: 'Constitution slow task: dummy slow ping'
+nodes:
+- id: task
+  skill_name: dummy
+  tool_name: ping
+  inputs:
+    x: '1'
+  outputs: []

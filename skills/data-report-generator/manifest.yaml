@@ -1,0 +1,140 @@
+name: "data-report-generator"
+version: "1.0.0"
+description: "Automatically analyze CSV or Excel files and generate professional data analysis reports with charts, summaries, and insights — output as Word (.docx) or PDF."
+
+runtime: "native"
+
+dependencies:
+  system:
+    - name: "python3"
+      version: ">=3.8"
+  python:
+    - name: "pandas"
+      version: ">=1.5.0"
+    - name: "matplotlib"
+      version: ">=3.5.0"
+    - name: "python-docx"
+      version: ">=0.8.11"
+  services: []
+
+resources:
+  disk: "1GB"
+  memory: "512MB"
+  gpu: false
+
+entrypoint:
+  module: "scripts.generate_report"
+  function: "main"
+
+inputs:
+  file_path:
+    type: "string"
+    description: "Path to CSV or Excel file"
+    required: true
+  
+  output_format:
+    type: "string"
+    description: "Report output format"
+    required: false
+    default: "docx"
+    enum: ["docx", "pdf"]
+  
+  report_type:
+    type: "string"
+    description: "Type of analysis/report"
+    required: false
+    default: "comprehensive"
+    enum: ["comprehensive", "sales", "financial", "operations", "marketing"]
+  
+  key_questions:
+    type: "array"
+    description: "Key questions to answer in the report"
+    required: false
+  
+  language:
+    type: "string"
+    description: "Report language"
+    required: false
+    default: "auto"
+    enum: ["auto", "zh", "en"]
+
+outputs:
+  report_path:
+    type: "string"
+    description: "Path to generated report file"
+  
+  summary:
+    type: "string"
+    description: "Executive summary of the analysis"
+  
+  charts:
+    type: "array"
+    description: "List of generated chart files"
+  
+  insights:
+    type: "array"
+    description: "Key insights from the data"
+
+# DAG Workflow Definition
+workflow:
+  name: "data-report-pipeline"
+  nodes:
+    - id: "validate"
+      name: "Validate Input File"
+      skill: "data-report-generator"
+      inputs:
+        action: "validate"
+        file_path: "$.inputs.file_path"
+    
+    - id: "profile"
+      name: "Profile Data"
+      skill: "data-report-generator"
+      depends_on: ["validate"]
+      inputs:
+        action: "profile"
+        file_path: "$.inputs.file_path"
+    
+    - id: "analyze"
+      name: "Analyze Data"
+      skill: "data-report-generator"
+      depends_on: ["profile"]
+      inputs:
+        action: "analyze"
+        file_path: "$.inputs.file_path"
+        report_type: "$.inputs.report_type"
+        key_questions: "$.inputs.key_questions"
+    
+    - id: "generate_charts"
+      name: "Generate Charts"
+      skill: "data-report-generator"
+      depends_on: ["analyze"]
+      inputs:
+        action: "generate_charts"
+        analysis_results: "$.nodes.analyze.outputs.results"
+    
+    - id: "compile_report"
+      name: "Compile Report"
+      skill: "data-report-generator"
+      depends_on: ["analyze", "generate_charts"]
+      inputs:
+        action: "compile"
+        analysis_results: "$.nodes.analyze.outputs.results"
+        charts: "$.nodes.generate_charts.outputs.charts"
+        output_format: "$.inputs.output_format"
+        language: "$.inputs.language"
+
+circuit_breaker:
+  failure_threshold: 3
+  recovery_timeout: 300
+
+retry_policy:
+  max_attempts: 2
+  backoff: "linear"
+  initial_delay: 5
+
+wal:
+  enabled: true
+  log_dir: "logs"
+  alert_channels:
+    - type: "email"
+      recipient: "zhy20152015@qq.com"

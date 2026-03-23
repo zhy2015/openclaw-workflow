@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心理锚点 · 在不确定的世界里，找到你的绝对坐标</title>
+    <link rel="icon" type="image/png" href="/logo.png">
+    <meta name="description" content="AI深度自我探索与决策辅助工具。像懂你多年的老朋友，带你重新梳理人生的出厂设置，解析潜意识的加密信号。">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background: linear-gradient(180deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #e8e8e8;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, rgba(100,149,237,0.3), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(147,112,219,0.2), transparent);
+            background-size: 450px 250px;
+            animation: twinkle 6s ease-in-out infinite;
+            pointer-events: none; z-index: 0;
+        }
+        @keyframes twinkle { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 1; }
+        header { text-align: center; margin-bottom: 30px; padding: 20px 0; border-bottom: 1px solid rgba(100,149,237, 0.3); }
+        .logo-img { width: 100px; height: 100px; border-radius: 20px; box-shadow: 0 0 40px rgba(100,149,237, 0.3); object-fit: cover; margin-bottom: 20px; }
+        header h1 { font-size: 2.5rem; font-weight: 700; background: linear-gradient(180deg, #6495ed 0%, #9370db 50%, #6495ed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 6px; }
+        .tagline { color: #888; font-size: 1rem; letter-spacing: 3px; margin-top: 10px; font-style: italic; }
+        .intro { color: #aaa; font-size: 0.9rem; line-height: 1.8; text-align: center; max-width: 700px; margin: 20px auto; padding: 0 20px; }
+        
+        .modules-section { margin: 40px 0; }
+        .section-title { color: #6495ed; font-size: 0.9rem; letter-spacing: 4px; margin-bottom: 20px; text-align: center; opacity: 0.8; }
+        .modules-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        @media (min-width: 768px) { .modules-grid { grid-template-columns: repeat(3, 1fr); } }
+        
+        .module-card {
+            background: linear-gradient(145deg, rgba(30,30,50,0.6) 0%, rgba(20,20,40,0.4) 100%);
+            border-radius: 16px;
+            padding: 25px 20px;
+            border: 1px solid rgba(100,149,237, 0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .module-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(100,149,237, 0.4);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(100,149,237, 0.1);
+        }
+        .module-icon { font-size: 2.2rem; margin-bottom: 12px; }
+        .module-name { color: #6495ed; font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; letter-spacing: 1px; }
+        .module-desc { color: #888; font-size: 0.8rem; line-height: 1.6; }
+        
+        footer { text-align: center; padding: 40px 20px; margin-top: 60px; border-top: 1px solid rgba(100,149,237, 0.2); color: #666; font-size: 0.85rem; }
+        footer p { margin: 8px 0; }
+        
+        /* Loading overlay */
+        .mystic-loading { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10,10,26,0.98); z-index: 1000; flex-direction: column; justify-content: center; align-items: center; }
+        .mystic-loading.show { display: flex; }
+        .mystic-circle { width: 120px; height: 120px; border: 2px solid rgba(100,149,237, 0.3); border-radius: 50%; position: relative; animation: rotate 10s linear infinite; }
+        .mystic-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2.5rem; }
+        .mystic-title { font-size: 1.3rem; color: #6495ed; letter-spacing: 6px; margin-top: 30px; }
+        .mystic-subtitle { color: #888; font-size: 0.9rem; margin-top: 10px; }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div class="mystic-loading" id="mysticLoading">
+        <div class="mystic-circle"><div class="mystic-center">⚓</div></div>
+        <div class="mystic-title">正在锚定...</div>
+        <div class="mystic-subtitle">请稍候</div>
+    </div>
+
+    <div class="container">
+        <header>
+            <img src="/logo.png" alt="心理锚点" class="logo-img">
+            <h1>心理锚点</h1>
+            <p class="tagline">在不确定的世界里，找到你的绝对坐标</p>
+        </header>
+        
+        <p class="intro">
+            我们不做泛泛而谈的鸡汤，而是像一位懂你多年的老朋友，或者一位极其敏锐的心理分析师，
+            带你重新梳理人生的出厂设置，解析潜意识的加密信号，为你提供高维度的心智启迪与情绪价值。
+        </p>
+        
+        <div class="modules-section">
+            <div class="section-title">━ 核心功能模块 ━</div>
+            <div class="modules-grid">
+                <a href="/life-manual.html" class="module-card">
+                    <div class="module-icon">🧭</div>
+                    <div class="module-name">生命说明书</div>
+                    <div class="module-desc">深度解析先天性格底色与认知偏好，找到最适合你的成长轨迹</div>
+                </a>
+                <a href="/projection.html" class="module-card">
+                    <div class="module-icon">🪞</div>
+                    <div class="module-name">潜意识投射</div>
+                    <div class="module-desc">借助荣格心理学原型意象，照见被理智压抑的真实诉求</div>
+                </a>
+                <a href="/dream-decoder.html" class="module-card">
+                    <div class="module-icon">🌌</div>
+                    <div class="module-name">梦境解码器</div>
+                    <div class="module-desc">破译潜意识写给你的密信，提取现实生活中忽略的信号</div>
+                </a>
+                <a href="/decision-sandbox.html" class="module-card">
+                    <div class="module-icon">♟️</div>
+                    <div class="module-name">决策推演沙盘</div>
+                    <div class="module-desc">极简态势感知，梳理局势的阻力点与最佳行动时机</div>
+                </a>
+                <a href="/relationship-dynamics.html" class="module-card">
+                    <div class="module-icon">💞</div>
+                    <div class="module-name">亲密关系动力学</div>
+                    <div class="module-desc">剖析核心冲突点，提供极具操作性的相处说明书</div>
+                </a>
+            </div>
+        </div>
+        
+        <footer>
+            <p>心理锚点 · AI深度自我探索与决策辅助工具</p>
+            <p style="opacity: 0.6; font-size: 0.8rem;">愿你在每一次波澜中，都能稳住自己的底盘</p>
+        </footer>
+    </div>
+</body>
+</html>

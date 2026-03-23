@@ -1,0 +1,29 @@
+{
+  "name": "memory-to-notion",
+  "description": "Sync conversation memory summaries into Notion Memory Store.",
+  "category": "integration",
+  "version": "1.0.4",
+  "task_nodes": [
+    "memory",
+    "automation"
+  ],
+  "status": "experimental",
+  "visibility": "internal",
+  "execution_type": "cli",
+  "owner": "workspace:local",
+  "last_verified_at": "2026-03-20T11:15:00Z",
+  "actions": {
+    "run": {
+      "command": "python3 main.py",
+      "description": "Default action migrated from _meta.json",
+      "args": {}
+    }
+  },
+  "routing": {
+    "startup_expose": false,
+    "startup_reason": "bridge_integration_only",
+    "hints": [
+      "explicit_task_trigger_required"
+    ]
+  }
+}

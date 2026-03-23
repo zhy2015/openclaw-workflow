@@ -1,0 +1,77 @@
+{
+  "crawlers": {
+    "playwright": {
+      "name": "playwright-scraper",
+      "type": "browser",
+      "path": "/root/.openclaw/workspace/skills/playwright-scraper-skill",
+      "scripts": {
+        "simple": "scripts/playwright-simple.js",
+        "stealth": "scripts/playwright-stealth.js"
+      },
+      "features": ["js_rendering", "screenshot", "anti_detection"],
+      "speed": "slow",
+      "reliability": "high",
+      "use_for": ["dynamic_sites", "anti_bot_protection", "spa"]
+    },
+    "firecrawler": {
+      "name": "firecrawler",
+      "type": "api",
+      "path": "/root/.openclaw/workspace/skills/firecrawler",
+      "scripts": {
+        "markdown": "fc.py markdown",
+        "screenshot": "fc.py screenshot",
+        "extract": "fc.py extract",
+        "search": "fc.py search",
+        "crawl": "fc.py crawl",
+        "map": "fc.py map"
+      },
+      "features": ["markdown_output", "structured_data", "screenshot", "search"],
+      "speed": "medium",
+      "reliability": "high",
+      "use_for": ["documentation", "structured_extraction", "general_purpose"],
+      "requires_api_key": true,
+      "api_key_env": "FIRECRAWL_API_KEY"
+    },
+    "requests": {
+      "name": "requests-bs4",
+      "type": "lightweight",
+      "path": null,
+      "features": ["fast", "low_resource"],
+      "speed": "fast",
+      "reliability": "medium",
+      "use_for": ["static_pages", "quick_scrape", "low_resource"]
+    }
+  },
+  "routing_rules": [
+    {
+      "condition": "anti_bot_protection",
+      "priority": ["playwright"]
+    },
+    {
+      "condition": "dynamic_content",
+      "priority": ["firecrawler", "playwright"]
+    },
+    {
+      "condition": "documentation",
+      "priority": ["firecrawler"]
+    },
+    {
+      "condition": "structured_data",
+      "priority": ["firecrawler"]
+    },
+    {
+      "condition": "static_page",
+      "priority": ["requests", "firecrawler"]
+    },
+    {
+      "condition": "default",
+      "priority": ["firecrawler", "playwright", "requests"]
+    }
+  ],
+  "settings": {
+    "default_crawler": "auto",
+    "timeout": 30,
+    "retry": 3,
+    "proxy": "http://127.0.0.1:7890"
+  }
+}

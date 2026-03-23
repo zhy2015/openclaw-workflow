@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生命说明书 · 心理锚点</title>
+    <link rel="icon" type="image/png" href="/logo.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background: linear-gradient(180deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #e8e8e8;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(2px 2px at 20px 30px, rgba(100,149,237,0.3), transparent);
+            background-size: 450px 250px;
+            animation: twinkle 6s ease-in-out infinite;
+            pointer-events: none; z-index: 0;
+        }
+        @keyframes twinkle { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 1; }
+        header { text-align: center; margin-bottom: 40px; padding: 20px 0; border-bottom: 1px solid rgba(100,149,237, 0.3); }
+        .back-link { color: #888; text-decoration: none; font-size: 0.9rem; position: absolute; left: 20px; top: 30px; }
+        .back-link:hover { color: #6495ed; }
+        .logo-small { width: 50px; height: 50px; border-radius: 10px; margin-bottom: 10px; }
+        header h1 { font-size: 1.8rem; color: #6495ed; letter-spacing: 3px; }
+        .subtitle { color: #888; font-size: 0.9rem; margin-top: 5px; }
+        
+        .card {
+            background: linear-gradient(145deg, rgba(30,30,50,0.6) 0%, rgba(20,20,40,0.4) 100%);
+            border-radius: 16px; padding: 30px; margin-bottom: 25px;
+            border: 1px solid rgba(100,149,237, 0.2);
+        }
+        .card-title { color: #6495ed; font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 2px; }
+        .datetime-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+        select, input, textarea {
+            width: 100%; padding: 14px 18px; background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(100,149,237, 0.2); border-radius: 8px;
+            color: #f0f0f0; font-size: 1rem; font-family: inherit;
+        }
+        textarea { resize: vertical; min-height: 100px; }
+        .upload-area {
+            border: 2px dashed rgba(100,149,237, 0.3); border-radius: 12px;
+            padding: 40px; text-align: center; cursor: pointer;
+            transition: all 0.3s; background: rgba(30,30,50,0.4);
+        }
+        .upload-area:hover { border-color: #6495ed; background: rgba(40,40,60,0.5); }
+        .submit-btn {
+            width: 100%; padding: 18px;
+            background: linear-gradient(135deg, #6495ed 0%, #9370db 100%);
+            border: none; border-radius: 8px; color: #fff;
+            font-size: 1.1rem; font-weight: 600; cursor: pointer;
+            letter-spacing: 4px; font-family: inherit; transition: all 0.3s;
+        }
+        .submit-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(100,149,237, 0.4); }
+        .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        
+        .tab-nav { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
+        .tab-btn { padding: 10px 25px; background: rgba(100,149,237, 0.1); border: 1px solid rgba(100,149,237, 0.3); color: #6495ed; cursor: pointer; border-radius: 25px; font-size: 0.9rem; font-family: inherit; transition: all 0.3s; }
+        .tab-btn:hover, .tab-btn.active { background: rgba(100,149,237, 0.2); border-color: #6495ed; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .result-card { display: none; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(100,149,237, 0.3); }
+        .result-card.show { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .loading-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10,10,26,0.98); z-index: 1000; flex-direction: column; justify-content: center; align-items: center; }
+        .loading-overlay.show { display: flex; }
+        .spinner { width: 60px; height: 60px; border: 3px solid rgba(100,149,237, 0.2); border-top-color: #6495ed; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        @media (max-width: 768px) { .datetime-row { grid-template-columns: repeat(2, 1fr); } header h1 { font-size: 1.4rem; } }
+    </style>
+</head>
+<body>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p style="color: #6495ed;">正在生成你的生命说明书...</p>
+        <p style="color: #888; font-size: 0.9rem; margin-top: 10px;">这需要 1-2 分钟</p>
+    </div>
+
+    <div class="container">
+        <header>
+            <a href="/" class="back-link">← 返回首页</a>
+            <img src="/logo.png" alt="心理锚点" class="logo-small">
+            <h1>🧭 生命说明书</h1>
+            <p class="subtitle">深度解析你的先天性格底色与认知偏好</p>
+        </header>
+        
+        <div class="tab-nav">
+            <button class="tab-btn active" data-tab="birth-info">出生信息</button>
+            <button class="tab-btn" data-tab="palm-reading">掌纹分析</button>
+            <button class="tab-btn" data-tab="face-reading">面相分析</button>
+        </div>
+        
+        <div class="tab-content active" id="tab-birth-info">
+            <form id="lifeManualForm">
+                <div class="card">
+                    <div class="card-title">📅 出生时间</div>
+                    <div class="datetime-row">
+                        <select name="year" id="yearSelect" required><option value="">年份</option></select>
+                        <select name="month" id="monthSelect" required><option value="">月份</option></select>
+                        <select name="day" id="daySelect" required><option value="">日期</option></select>
+                        <select name="hour" id="hourSelect" required><option value="">时辰</option></select>
+                    </div>
+                    <input type="text" name="birth_place" placeholder="出生地（选填）" style="margin-top: 15px;">
+                </div>
+                <div class="card">
+                    <div class="card-title">📝 补充信息（选填）</div>
+                    <textarea name="life_story" rows="4" placeholder="描述你的人生经历、当前困惑、想了解的方向..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">⚓ 生成生命说明书</button>
+            </form>
+            <div class="card result-card" id="birthResult">
+                <div class="card-title">📊 你的出厂设置</div>
+                <div id="birthResultContent"></div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="tab-palm-reading">
+            <div class="card">
+                <div class="card-title">✋ 掌纹分析</div>
+                <p style="color: #888; margin-bottom: 20px;">上传手掌照片，AI解析你的智慧线、生命线、感情线</p>
+                <input type="file" id="handImage" accept="image/*" style="display: none;">
+                <div class="upload-area" onclick="document.getElementById('handImage').click()">
+                    <div id="handUploadText">点击上传手掌照片</div>
+                    <img id="handPreview" style="display: none; max-width: 100%; max-height: 300px; margin-top: 15px; border-radius: 8px;">
+                </div>
+                <button class="submit-btn" style="margin-top: 20px;" onclick="analyzePalm()">🔮 解析掌纹</button>
+            </div>
+            <div id="palmResult"></div>
+        </div>
+        
+        <div class="tab-content" id="tab-face-reading">
+            <div class="card">
+                <div class="card-title">😊 面相分析</div>
+                <p style="color: #888; margin-bottom: 20px;">上传面部照片，AI解析你的五官特征与气质</p>
+                <input type="file" id="faceImage" accept="image/*" style="display: none;">
+                <div class="upload-area" onclick="document.getElementById('faceImage').click()">
+                    <div id="faceUploadText">点击上传面部照片</div>
+                    <img id="facePreview" style="display: none; max-width: 100%; max-height: 300px; margin-top: 15px; border-radius: 8px;">
+                </div>
+                <button class="submit-btn" style="margin-top: 20px;" onclick="analyzeFace()">🔮 解析面相</button>
+            </div>
+            <div id="faceResult"></div>
+        </div>
+    </div>
+    
+    <script>
+        // Tab切换
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+            });
+        });
+        
+        // 填充选项
+        for (let y = 2026; y >= 1900; y--) document.getElementById('yearSelect').innerHTML += '<option value="' + y + '">' + y + '年</option>';
+        for (let m = 1; m <= 12; m++) document.getElementById('monthSelect').innerHTML += '<option value="' + m + '">' + m + '月</option>';
+        for (let d = 1; d <= 31; d++) document.getElementById('daySelect').innerHTML += '<option value="' + d + '">' + d + '日</option>';
+        for (let h = 0; h < 24; h++) document.getElementById('hourSelect').innerHTML += '<option value="' + h + '">' + h + ':00</option>';
+        
+        // 图片预览
+        document.getElementById('handImage').addEventListener('change', function() {
+            if (this.files[0]) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    document.getElementById('handPreview').src = e.target.result;
+                    document.getElementById('handPreview').style.display = 'block';
+                    document.getElementById('handUploadText').textContent = '图片已上传';
+                };
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+        document.getElementById('faceImage').addEventListener('change', function() {
+            if (this.files[0]) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    document.getElementById('facePreview').src = e.target.result;
+                    document.getElementById('facePreview').style.display = 'block';
+                    document.getElementById('faceUploadText').textContent = '图片已上传';
+                };
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+        
+        // 出生信息分析
+        document.getElementById('lifeManualForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            document.getElementById('loadingOverlay').classList.add('show');
+            try {
+                const res = await fetch('/api/analyze', { method: 'POST', body: new FormData(e.target) });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || '生成失败');
+                
+                let html = '<div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 20px;">' +
+                    ['年柱','月柱','日柱','时柱'].map((label,i) => '<div style="text-align: center; padding: 15px; background: rgba(100,149,237,0.1); border-radius: 8px;"><div style="color: #888; font-size: 0.75rem;">' + label + '</div><div style="color: #6495ed; font-size: 1.5rem;">' + Object.values(data.bazi)[i] + '</div></div>').join('') +
+                    '</div>';
+                html += '<div style="line-height: 2; white-space: pre-wrap; color: #ccc;">' + data.analysis + '</div>';
+                document.getElementById('birthResultContent').innerHTML = html;
+                document.getElementById('birthResult').classList.add('show');
+                document.getElementById('birthResult').scrollIntoView({ behavior: 'smooth' });
+            } catch (err) {
+                alert('生成失败：' + err.message);
+            } finally {
+                document.getElementById('loadingOverlay').classList.remove('show');
+            }
+        });
+        
+        // 掌纹分析
+        async function analyzePalm() {
+            const input = document.getElementById('handImage');
+            if (!input.files[0]) return alert('请先上传手掌照片');
+            document.getElementById('loadingOverlay').classList.add('show');
+            try {
+                const formData = new FormData();
+                formData.append('image', input.files[0]);
+                const res = await fetch('/api/analyze-hand', { method: 'POST', body: formData });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || '分析失败');
+                document.getElementById('palmResult').innerHTML = '<div class="card result-card show"><div class="card-title">✋ 掌纹解读</div><div style="line-height: 1.8; white-space: pre-wrap;">' + data.analysis + '</div></div>';
+                document.getElementById('palmResult').scrollIntoView({ behavior: 'smooth' });
+            } catch (err) {
+                alert('分析失败：' + err.message);
+            } finally {
+                document.getElementById('loadingOverlay').classList.remove('show');
+            }
+        }
+        
+        // 面相分析
+        async function analyzeFace() {
+            const input = document.getElementById('faceImage');
+            if (!input.files[0]) return alert('请先上传面部照片');
+            document.getElementById('loadingOverlay').classList.add('show');
+            try {
+                const formData = new FormData();
+                formData.append('image', input.files[0]);
+                const res = await fetch('/api/analyze-face', { method: 'POST', body: formData });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || '分析失败');
+                document.getElementById('faceResult').innerHTML = '<div class="card result-card show"><div class="card-title">😊 面相解读</div><div style="line-height: 1.8; white-space: pre-wrap;">' + data.analysis + '</div></div>';
+                document.getElementById('faceResult').scrollIntoView({ behavior: 'smooth' });
+            } catch (err) {
+                alert('分析失败：' + err.message);
+            } finally {
+                document.getElementById('loadingOverlay').classList.remove('show');
+            }
+        }
+    </script>
+</body>
+</html>

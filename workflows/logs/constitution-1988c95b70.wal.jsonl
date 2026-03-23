@@ -1,0 +1,4 @@
+{"timestamp": "2026-03-22T18:08:52.900446", "workflow_id": "constitution-1988c95b70", "task_id": "first", "status": "running", "metadata": {"skill_uri": null, "skill_name": "dummy", "tool_name": "ping"}}
+{"timestamp": "2026-03-22T18:08:52.904397", "workflow_id": "constitution-1988c95b70", "task_id": "second", "status": "running", "metadata": {"skill_uri": null, "skill_name": "dummy", "tool_name": "echo"}}
+{"timestamp": "2026-03-22T18:08:52.906062", "workflow_id": "constitution-1988c95b70", "task_id": "first", "status": "success", "payload": {"first.message": "hello"}, "metadata": {"node_id": "first"}}
+{"timestamp": "2026-03-22T18:08:52.910830", "workflow_id": "constitution-1988c95b70", "task_id": "second", "status": "success", "payload": {"second.echo": "hello"}, "metadata": {"node_id": "second"}}

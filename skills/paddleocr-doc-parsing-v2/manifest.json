@@ -1,0 +1,29 @@
+{
+  "name": "paddleocr-doc-parsing-v2",
+  "description": "OCR document parsing",
+  "category": "data",
+  "version": "1.0.4",
+  "task_nodes": [
+    "automation",
+    "media"
+  ],
+  "status": "experimental",
+  "visibility": "internal",
+  "execution_type": "cli",
+  "owner": "workspace:local",
+  "last_verified_at": "2026-03-20T11:15:00Z",
+  "actions": {
+    "run": {
+      "command": "python3 scripts/paddleocr_parse.py",
+      "description": "Default action migrated from _meta.json",
+      "args": {}
+    }
+  },
+  "routing": {
+    "startup_expose": false,
+    "startup_reason": "ocr_only",
+    "hints": [
+      "explicit_task_trigger_required"
+    ]
+  }
+}

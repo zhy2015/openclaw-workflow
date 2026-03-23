@@ -1,0 +1,5 @@
+{"timestamp": "2026-03-20T22:33:57.704055", "workflow_id": "test-chaos-core", "task_id": "node_a", "status": "running", "metadata": {"skill_uri": "skill://echo-skill/default_action"}}
+{"timestamp": "2026-03-20T22:33:57.706150", "workflow_id": "test-chaos-core", "task_id": "node_fail", "status": "running", "metadata": {"skill_uri": "skill://echo-skill/default_action"}}
+{"timestamp": "2026-03-20T22:33:58.209203", "workflow_id": "test-chaos-core", "task_id": "node_a", "status": "success", "payload": {"node_a.message": "Hello", "node_a.status": "success", "node_a.node": "A"}, "metadata": {"node_id": "node_a"}}
+{"timestamp": "2026-03-20T22:33:58.211433", "workflow_id": "test-chaos-core", "task_id": "node_fail", "status": "failed", "error": "Pipeline failed at node: node_fail - Forced failure after: Hello", "metadata": {"node_id": "node_fail", "source": "runner_exception_handler"}}
+{"timestamp": "2026-03-20T22:33:58.214566", "workflow_id": "test-chaos-core", "task_id": "node_fail", "status": "failed", "error": "Forced failure after: Hello", "metadata": {"node_id": "node_fail"}}

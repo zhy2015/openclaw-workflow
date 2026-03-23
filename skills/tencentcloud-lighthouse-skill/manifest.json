@@ -1,0 +1,55 @@
+{
+  "name": "tencentcloud-lighthouse-skill",
+  "description": "Manage Tencent Cloud Lighthouse (轻量应用服务器) — auto-setup, monitoring, snapshots, remote execution.",
+  "category": "infrastructure",
+  "version": "1.0.0",
+  "task_nodes": [
+    "automation",
+    "monitoring"
+  ],
+  "status": "archived",
+  "visibility": "hidden",
+  "execution_type": "python_import",
+  "owner": "workspace:local",
+  "last_verified_at": "2026-03-20T11:13:00Z",
+  "actions": {
+    "default_action": {
+      "description": "Default action migrated from v1",
+      "module": "scripts.lighthouse",
+      "function": "manage",
+      "args": {
+        "action": {
+          "type": "string",
+          "description": "Lighthouse action",
+          "required": true,
+          "enum": [
+            "list",
+            "start",
+            "stop",
+            "reboot",
+            "snapshot",
+            "exec",
+            "monitor"
+          ]
+        },
+        "instance_id": {
+          "type": "string",
+          "description": "Instance ID",
+          "required": false
+        },
+        "command": {
+          "type": "string",
+          "description": "Command to execute (for exec)",
+          "required": false
+        }
+      }
+    }
+  },
+  "routing": {
+    "startup_expose": false,
+    "startup_reason": "specialized_cloud_only",
+    "hints": [
+      "explicit_task_trigger_required"
+    ]
+  }
+}

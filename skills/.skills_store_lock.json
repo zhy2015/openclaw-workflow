@@ -1,0 +1,161 @@
+{
+  "version": 1,
+  "skills": {
+    "tavily-search": {
+      "name": "Tavily Web Search",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=tavily-search",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "summarize": {
+      "name": "Summarize",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=summarize",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "agent-browser": {
+      "name": "Agent Browser",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=agent-browser",
+      "source": "skillhub",
+      "version": "0.2.0"
+    },
+    "find-skills": {
+      "name": "Find Skills",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=find-skills",
+      "source": "skillhub",
+      "version": "0.1.0"
+    },
+    "github": {
+      "name": "Github",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=github",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "obsidian": {
+      "name": "Obsidian",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=obsidian",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "weather": {
+      "name": "Weather",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=weather",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "clash-vpn": {
+      "name": "Clash VPN",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=clash-vpn",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "memory-dedup": {
+      "name": "Memory Deduplication",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=memory-dedup",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "memory-to-notion": {
+      "name": "memory-to-notion",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=memory-to-notion",
+      "source": "skillhub",
+      "version": "1.0.4"
+    },
+    "openclaw-ops-guardrails": {
+      "name": "OpenClaw Ops Guardrails",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=openclaw-ops-guardrails",
+      "source": "skillhub",
+      "version": "0.1.1"
+    },
+    "skill-safety-checker": {
+      "name": "Skill Safety Checker",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=skill-safety-checker",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "restart-recovery": {
+      "name": "Restart Recovery",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=restart-recovery",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "csv-data-explorer": {
+      "name": "CSV Data Explorer",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=csv-data-explorer",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "data-report-generator": {
+      "name": "Data Report Generator — CSV/Excel to Word/PDF with Charts",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=data-report-generator",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "qqmail-sender": {
+      "name": "Email Sender",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=qqmail-sender",
+      "source": "skillhub",
+      "version": "1.1.0"
+    },
+    "qqmail": {
+      "name": "QQ Mail",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=qqmail",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "playwright-scraper-skill": {
+      "name": "Playwright Scraper Skill",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=playwright-scraper-skill",
+      "source": "skillhub",
+      "version": "1.2.0"
+    },
+    "firecrawler": {
+      "name": "Firecrawler",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=firecrawler",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "self-improving-agent": {
+      "name": "self-improving-agent",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=self-improving-agent",
+      "source": "skillhub",
+      "version": "1.0.11"
+    },
+    "proactive-agent": {
+      "name": "Proactive Agent",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=proactive-agent",
+      "source": "skillhub",
+      "version": "3.1.0"
+    },
+    "feishu-evolver-wrapper": {
+      "name": "Feishu Evolver Wrapper",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=feishu-evolver-wrapper",
+      "source": "skillhub",
+      "version": "1.7.1"
+    },
+    "feishu-messaging": {
+      "name": "Feishu Messaging",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=feishu-messaging",
+      "source": "skillhub",
+      "version": "0.0.3"
+    },
+    "feishu-doc-manager": {
+      "name": "📄 Feishu Doc Manager | 飞书文档管理器",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=feishu-doc-manager",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "receiving-code-review": {
+      "name": "Receiving Code Review",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=receiving-code-review",
+      "source": "skillhub",
+      "version": "0.1.0"
+    },
+    "architecture-designer": {
+      "name": "Architecture Designer",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=architecture-designer",
+      "source": "skillhub",
+      "version": "0.1.0"
+    }
+  }
+}

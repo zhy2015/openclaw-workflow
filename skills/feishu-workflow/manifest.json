@@ -1,0 +1,21 @@
+{
+  "name": "feishu-workflow",
+  "version": "1.0.0",
+  "description": "Unified Feishu workflow facade for docs, messaging, lookup, permissions, and retry guidance",
+  "category": "social",
+  "task_nodes": ["social", "automation", "memory"],
+  "status": "active",
+  "visibility": "public",
+  "execution_type": "doc_only",
+  "owner": "workspace:facade",
+  "last_verified_at": "2026-03-20T06:08:00Z",
+  "actions": {
+    "guide": {
+      "description": "Guide Feishu document and messaging workflows using native tools first"
+    }
+  },
+  "consolidates": [
+    "feishu-doc-manager",
+    "feishu-messaging"
+  ]
+}

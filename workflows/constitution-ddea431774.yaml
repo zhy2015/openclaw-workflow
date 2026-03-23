@@ -1,0 +1,16 @@
+workflow_id: constitution-ddea431774
+name: 'Constitution slow task: dummy fail path'
+nodes:
+- id: first
+  skill_name: dummy
+  tool_name: ping
+  inputs:
+    x: ok
+  outputs:
+  - message
+  next:
+  - boom
+- id: boom
+  skill_name: dummy
+  tool_name: fail
+  inputs: {}

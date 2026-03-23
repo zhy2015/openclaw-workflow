@@ -1,0 +1,31 @@
+{
+  "name": "audio-mixer",
+  "version": "1.0.0",
+  "description": "视频底层混音和音频对齐",
+  "category": "media",
+  "task_nodes": [
+    "media"
+  ],
+  "status": "experimental",
+  "visibility": "internal",
+  "execution_type": "python_entry",
+  "owner": "workspace:local",
+  "last_verified_at": "2026-03-20T07:57:00Z",
+  "entry_point": "audio_mixer.py",
+  "actions": {
+    "align_audio": "sync_audio_to_video",
+    "mix_tracks": "mix_audio_tracks",
+    "normalize": "normalize_audio"
+  },
+  "dependencies": [
+    "pydub"
+  ],
+  "config_required": [],
+  "routing": {
+    "startup_expose": false,
+    "startup_reason": "media_postprocess_only",
+    "hints": [
+      "explicit_task_trigger_required"
+    ]
+  }
+}

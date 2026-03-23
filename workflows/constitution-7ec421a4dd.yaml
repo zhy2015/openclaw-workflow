@@ -1,0 +1,19 @@
+workflow_id: constitution-7ec421a4dd
+name: 'Constitution slow task: dummy multi-step'
+nodes:
+- id: first
+  skill_name: dummy
+  tool_name: ping
+  inputs:
+    x: hello
+  outputs:
+  - message
+  next:
+  - second
+- id: second
+  skill_name: dummy
+  tool_name: echo
+  inputs:
+    message: first.message
+  outputs:
+  - echo

@@ -1,0 +1,38 @@
+{
+  "name": "qqbot-cron",
+  "description": "QQ Bot 智能提醒旧技能（历史归档占位）",
+  "category": "automation",
+  "version": "1.0.0",
+  "task_nodes": ["automation"],
+  "status": "archived",
+  "visibility": "hidden",
+  "execution_type": "python_import",
+  "owner": "workspace:legacy",
+  "last_verified_at": "2026-03-20T09:40:00Z",
+  "actions": {
+    "default_action": {
+      "description": "Legacy placeholder only; implementation missing",
+      "module": "scripts.qqbot_cron",
+      "function": "schedule",
+      "args": {
+        "action": {
+          "type": "string",
+          "description": "Action",
+          "required": true,
+          "enum": ["add", "list", "cancel"]
+        },
+        "reminder_text": {
+          "type": "string",
+          "description": "Reminder content",
+          "required": false
+        },
+        "at_minutes": {
+          "type": "integer",
+          "description": "Minutes from now",
+          "required": false
+        }
+      }
+    }
+  },
+  "notes": "Archived because implementation is missing; keep only for historical reference until rebuilt."
+}

@@ -1,0 +1,59 @@
+{
+  "audit_summary": {
+    "total_skills": 28,
+    "missing_governance_fields": 0,
+    "missing_skill_md": 0,
+    "gitlink_skills": 0,
+    "zero_usage": 2,
+    "active_public": 5
+  },
+  "visibility_counts": {
+    "memory": 7,
+    "media": 10,
+    "monitoring": 6,
+    "automation": 24,
+    "governance": 5,
+    "coding": 0,
+    "social": 4
+  },
+  "advice_summary": {
+    "skills_with_advice": 21,
+    "promote_candidates": 18,
+    "downgrade_candidates": 0,
+    "archive_candidates": 0,
+    "governance_fixes": 0,
+    "boundary_fixes": 0
+  },
+  "governed_skills": [
+    "audio-mixer",
+    "clash-auto-switch",
+    "clash-vpn",
+    "cli-anything-drawio",
+    "csv-data-explorer",
+    "data-report-generator",
+    "echo-skill",
+    "feishu-doc-manager",
+    "feishu-evolver-wrapper",
+    "feishu-messaging",
+    "feishu-workflow",
+    "firecrawler",
+    "hidream-api-gen",
+    "komori-sfx",
+    "memory-master",
+    "memory-to-notion",
+    "notion",
+    "one-story-video",
+    "paddleocr-doc-parsing-v2",
+    "pixabay-media",
+    "playwright-scraper-skill",
+    "proactive-agent",
+    "qqbot-cron",
+    "qqmail",
+    "self-improving-agent",
+    "sfx-generator",
+    "tencentcloud-lighthouse-skill",
+    "tikhub-api"
+  ],
+  "ungoverned_skills": [],
+  "gitlink_skills": []
+}

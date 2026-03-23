@@ -1,0 +1,61 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.venv/
+venv/
+
+# Node
+node_modules/
+
+# Local env / secrets
+.env
+.env.*
+!.env.example
+
+# Outputs / artifacts
+output/
+archive/
+logs/
+*.mp4
+*.mov
+*.mkv
+*.avi
+*.webm
+*.wav
+*.png
+*.jpg
+*.jpeg
+*.gif
+bin/
+127.0.0.1:7890
+
+# Memory/runtime data
+memory/daily/
+memory/distilled/
+memory/archive/
+memory/index/
+memory/runtime/
+memory/wal_data/
+memory/metrics/
+memory/working-buffer.md
+memory/core/heartbeat-state.json
+
+# Project-local clutter
+projects/**/node_modules/
+projects/**/venv/
+projects/**/.venv/
+projects/**/uploads/
+projects/**/*.db
+projects/**/*.sqlite
+projects/**/*.sqlite3
+projects/**/__pycache__/
+projects/**/logs/
+
+# Nested repos / external heavy trees
+metal-anchor-monorepo/
+skill-governance/
+projects/skill-governance/
+resources/game-assets/
+skills/one-story-video/

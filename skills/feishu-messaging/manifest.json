@@ -1,0 +1,28 @@
+{
+  "name": "feishu-messaging",
+  "version": "0.0.3",
+  "description": "Feishu messaging workflow skill for sending messages and looking up chats/members",
+  "category": "social",
+  "task_nodes": [
+    "social",
+    "automation"
+  ],
+  "status": "deprecated",
+  "visibility": "internal",
+  "execution_type": "doc_only",
+  "owner": "skillhub:kn7bsdhpz7e3pyqbbtabcswgp980ncty",
+  "last_verified_at": "2026-03-20T05:59:00Z",
+  "actions": {
+    "guide": {
+      "description": "Operational guide for Feishu messaging flows"
+    }
+  },
+  "merged_into": "feishu-workflow",
+  "routing": {
+    "startup_expose": false,
+    "startup_reason": "deprecated_superseded_by_native_or_facade",
+    "hints": [
+      "explicit_task_trigger_required"
+    ]
+  }
+}

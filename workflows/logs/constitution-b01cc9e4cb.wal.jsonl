@@ -1,0 +1,2 @@
+{"timestamp": "2026-03-21T22:57:23.726516", "workflow_id": "constitution-b01cc9e4cb", "task_id": "task", "status": "running", "metadata": {"skill_uri": null, "skill_name": "dummy", "tool_name": "ping"}}
+{"timestamp": "2026-03-21T22:57:23.736160", "workflow_id": "constitution-b01cc9e4cb", "task_id": "task", "status": "success", "payload": {}, "metadata": {"node_id": "task"}}
