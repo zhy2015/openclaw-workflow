@@ -22,8 +22,8 @@ class ProgressCheckpoint:
 
 
 class ProgressTracker:
-    def __init__(self, root: str = "/root/.openclaw/workspace/logs/progress"):
-        self.root = Path(root)
+    def __init__(self, root: str | None = None):
+        self.root = Path(root) if root else Path(__file__).resolve().parents[2] / "logs" / "progress"
         self.root.mkdir(parents=True, exist_ok=True)
 
     def _path(self, task_id: str) -> Path:

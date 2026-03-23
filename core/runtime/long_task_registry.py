@@ -7,8 +7,9 @@ from pathlib import Path
 from typing import Any, Optional
 
 
-ACTIVE_PATH = Path("/root/.openclaw/workspace/memory/runtime/active_long_tasks.json")
-ARCHIVE_ROOT = Path("/root/.openclaw/workspace/memory/runtime/archive")
+REPO_ROOT = Path(__file__).resolve().parents[2]
+ACTIVE_PATH = REPO_ROOT / "runtime_state" / "active_long_tasks.json"
+ARCHIVE_ROOT = REPO_ROOT / "runtime_state" / "archive"
 
 
 def _now_iso() -> str:

@@ -42,7 +42,7 @@ class ConstitutionRuntime:
         self.router = router or TaskRouter()
         self.memory_policy = memory_policy or MemoryPolicyEngine()
         self.audit = audit or AuditLogger(str(self.workspace_root / "logs" / "constitution.log"))
-        self.progress = ProgressTracker()
+        self.progress = ProgressTracker(str(self.workspace_root / "logs" / "progress"))
         self.dispatcher = GovernedDispatcher(self.skill_manager)
         self.workflow_runner = workflow_runner or WorkflowRunner(workspace_root=str(self.workspace_root), dispatcher=self.dispatcher)
 
