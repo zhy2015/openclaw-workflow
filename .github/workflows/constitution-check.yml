@@ -27,7 +27,9 @@ jobs:
 
       - name: Core constitution tests
         run: |
-          python3 -m pytest -q \
+          python3 --version
+          python3 -c "import sys; print(sys.executable)"
+          python3 -m pytest -vv \
             core/tests/test_skill_manager_smoke.py \
             core/tests/test_base_agent_constitution.py \
             core/tests/test_constitution_runtime.py
